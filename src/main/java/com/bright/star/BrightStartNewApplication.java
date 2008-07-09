@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @MapperScan("com.bright.star.infrastructure.persistence.dao")
 public class BrightStartNewApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(BrightStartNewApplication.class, args);
     }
