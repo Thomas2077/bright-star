@@ -1,8 +1,8 @@
 package com.bright.star.service;
 
 import org.springframework.stereotype.Service;
-import com.bright.star.entity.SyainMain;
-import com.bright.star.dao.SyainMainDao;
+import com.bright.star.infrastructure.persistence.entity.SyainMain;
+import com.bright.star.infrastructure.persistence.dao.SyainMainDao;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**

@@ -1,23 +1,21 @@
 package com.bright.star.controller;
 
 import com.bright.star.service.UserAccessLogService;
-import com.bright.star.entity.UserAccessLog;
+import com.bright.star.infrastructure.persistence.entity.UserAccessLog;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.bright.star.common.config.PageResult;
-import com.bright.star.common.config.result.R;
-import com.bright.star.model.dto.UserAccessLogDTO;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.bright.star.infrastructure.common.PageResult;
+import com.bright.star.infrastructure.common.result.R;
+import com.bright.star.infrastructure.persistence.dto.UserAccessLogDTO;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.hutool.core.bean.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import cn.hutool.core.collection.CollectionUtil;
+
 import java.util.List;
-import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.RestController;
 
 /**
