@@ -1,28 +1,21 @@
 database: mysql
+
 spring:
-  mvc:
-    path match:
-      matching-strategy: ant_path_matcher
   datasource:
     schema: "classpath:db/${database}/schema.sql"
     data: "classpath:db/${database}/data.sql"
     sql-script-encoding: UTF-8
-springdoc:
-  version: '1.0.0'
-  swagger-ui:
-    use-root-path: true
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mapping/*.xml
+  type-aliases-package: com.align.user.entity.* #配置不正确会连不上mysql
   global-config:
     db-config:
       logic-not-delete-value: 1
       logic-delete-value: 0
-mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#logging:
-#  pattern:
-#    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(-){faint} %clr([%t]){faint} %clr(%-40logger{39}){cyan}[%line]%clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
-#
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(-){faint} %clr([%t]){faint} %clr(%-40logger{39}){cyan}[%line]%clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+  level:
+    root: INFO
