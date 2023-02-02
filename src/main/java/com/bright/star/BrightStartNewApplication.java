@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.bright.star.dao")
+@MapperScan("com.bright.star.infrastructure.persistence.dao")
 public class BrightStartNewApplication {
 
     public static void main(String[] args) {

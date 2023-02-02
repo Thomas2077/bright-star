@@ -1,23 +1,17 @@
-package com.bright.star.model.dto;
+package com.bright.star.infrastructure.persistence.dto;
 
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import com.baomidou.mybatisplus.annotation.IdType;
-    import com.baomidou.mybatisplus.extension.activerecord.Model;
     import java.time.LocalDate;
-    import com.baomidou.mybatisplus.annotation.TableId;
     import java.time.LocalDateTime;
-    import com.baomidou.mybatisplus.annotation.TableField;
     import java.io.Serializable;
-    import com.baomidou.mybatisplus.annotation.TableName;
+
     import io.swagger.annotations.ApiModel;
     import io.swagger.annotations.ApiModelProperty;
     import lombok.Data;
-    import lombok.EqualsAndHashCode;
     import lombok.experimental.Accessors;
 
 /**
 * <p>
-* 社員_経費
+* 社員マスタ_経歴
 * </p>
 *
 * @since 2023-02-02
@@ -25,9 +19,9 @@ package com.bright.star.model.dto;
 @Data
 @Accessors(chain = true)
 
-@ApiModel(value = "SyainRirekiDTO对象", description = "社員_経費")
+@ApiModel(value = "SyainKeirekiDTO对象", description = "社員マスタ_経歴")
 
-public class SyainRirekiDTO implements Serializable {
+public class SyainKeirekiDTO implements Serializable {
 
 
     private Integer syainId;
@@ -45,45 +39,33 @@ public class SyainRirekiDTO implements Serializable {
     private LocalDate syuryobi;
 
     /**
-    * 登録日
-    */
-    @ApiModelProperty(value = "登録日")
-    private LocalDateTime tourokubi;
-
-    /**
-    * 更新日
-    */
-    @ApiModelProperty(value = "更新日")
-    private LocalDateTime kousinnbi;
-
-    /**
     * プロジェクト名
     */
     @ApiModelProperty(value = "プロジェクト名")
     private String pjName;
 
     /**
-    * 対日フラグ
+    * 対日かどうか
     */
-    @ApiModelProperty(value = "対日フラグ")
+    @ApiModelProperty(value = "対日かどうか")
     private Integer tainitiFlag;
 
     /**
-    * 場所
+    * 開発場所
     */
-    @ApiModelProperty(value = "場所")
+    @ApiModelProperty(value = "開発場所")
     private Integer basyo;
 
     /**
-    * 規模
+    * 開発規模
     */
-    @ApiModelProperty(value = "規模")
+    @ApiModelProperty(value = "開発規模")
     private Integer kibo;
 
     /**
-    * 業種
+    * 開発業種
     */
-    @ApiModelProperty(value = "業種")
+    @ApiModelProperty(value = "開発業種")
     private Integer gyosyu;
 
     /**
@@ -107,9 +89,9 @@ public class SyainRirekiDTO implements Serializable {
     private String db;
 
     /**
-    * ツール
+    * FW・IDE・ツール
     */
-    @ApiModelProperty(value = "ツール")
+    @ApiModelProperty(value = "FW・IDE・ツール")
     private String tool;
 
     /**
@@ -125,10 +107,22 @@ public class SyainRirekiDTO implements Serializable {
     private Integer sagyohani;
 
     /**
-    * 概要
+    * 開発概要
     */
-    @ApiModelProperty(value = "概要")
+    @ApiModelProperty(value = "開発概要")
     private String gaiyou;
+
+    /**
+    * 登録日
+    */
+    @ApiModelProperty(value = "登録日")
+    private LocalDateTime tourokubi;
+
+    /**
+    * 更新日
+    */
+    @ApiModelProperty(value = "更新日")
+    private LocalDateTime kousinnbi;
 
 
 
