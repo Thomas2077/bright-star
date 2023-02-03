@@ -68,7 +68,6 @@ public class R<T> {
      * @return
      */
     public static R pageSuccess(PageResult pageR) {
-
         return R.builder().code(HttpStatus.OK.value()).message("").data(pageR).build();
     }
 

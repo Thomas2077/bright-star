@@ -1,4 +1,4 @@
-package com.bright.star.infrastructure.persistence.dto;
+package com.bright.star.service.dto;
 
     import java.time.LocalDate;
     import java.time.LocalDateTime;

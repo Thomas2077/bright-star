@@ -1,4 +1,4 @@
-package com.bright.star.infrastructure.persistence.dto;
+package com.bright.star.service.dto;
 
     import java.io.Serializable;
 
@@ -8,16 +8,14 @@ package com.bright.star.infrastructure.persistence.dto;
 
 /**
 * <p>
-* 
+*  setting table
 * </p>
 *
 * @since 2023-02-02
 */
 @Data
 @Accessors(chain = true)
-
 @ApiModel(value = "TgSettingDTO对象", description = "")
-
 public class TgSettingDTO implements Serializable {
 
 

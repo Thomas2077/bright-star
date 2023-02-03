@@ -5,13 +5,12 @@ import com.bright.star.infrastructure.persistence.entity.SyainMain;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bright.star.infrastructure.common.PageResult;
 import com.bright.star.infrastructure.common.result.R;
-import com.bright.star.infrastructure.persistence.dto.SyainMainDTO;
+import com.bright.star.service.dto.SyainMainDTO;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.hutool.core.bean.BeanUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,13 +26,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Slf4j
-@Api(tags = "")
+@Api(tags = "worker manage")
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1/work-manage")
 public class SyainMainController {
 
-    @Autowired
-    private SyainMainService syainMainService;
+    private final SyainMainService syainMainService;
+
+    public SyainMainController(SyainMainService syainMainService) {
+        this.syainMainService = syainMainService;
+    }
+
+
 
 
     @ApiOperation(value = "新增")

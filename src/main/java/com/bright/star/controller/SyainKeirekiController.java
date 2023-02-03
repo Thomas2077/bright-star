@@ -5,7 +5,7 @@ import com.bright.star.infrastructure.persistence.entity.SyainKeireki;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bright.star.infrastructure.common.PageResult;
 import com.bright.star.infrastructure.common.result.R;
-import com.bright.star.infrastructure.persistence.dto.SyainKeirekiDTO;
+import com.bright.star.service.dto.SyainKeirekiDTO;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.hutool.core.bean.BeanUtil;
 import io.swagger.annotations.Api;
@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 * @since 2023-02-02
 */
 
-@Slf4j
 @Api(tags = "社員マスタ_経歴")
 @RestController
 @RequestMapping("/syainKeireki")

@@ -1,4 +1,4 @@
-package com.bright.star.infrastructure.persistence.dto;
+package com.bright.star.service.dto;
 
     import java.time.LocalDateTime;
     import java.io.Serializable;
@@ -17,9 +17,7 @@ package com.bright.star.infrastructure.persistence.dto;
 */
 @Data
 @Accessors(chain = true)
-
-@ApiModel(value = "SyainKeihiDTO对象", description = "社員_経費")
-
+@ApiModel(value = "SyainKeihiDTO", description = "社員_経費")
 public class SyainKeihiDTO implements Serializable {
 
 

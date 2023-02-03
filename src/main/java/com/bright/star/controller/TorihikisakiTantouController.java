@@ -5,7 +5,7 @@ import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bright.star.infrastructure.common.PageResult;
 import com.bright.star.infrastructure.common.result.R;
-import com.bright.star.infrastructure.persistence.dto.TorihikisakiTantouDTO;
+import com.bright.star.service.dto.TorihikisakiTantouDTO;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.hutool.core.bean.BeanUtil;
 import io.swagger.annotations.Api;
