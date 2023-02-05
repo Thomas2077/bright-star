@@ -1,6 +1,6 @@
-package com.bright.star.controller;
+package com.bright.star.controller.tmp;
 
-import com.bright.star.service.TorihikisakiTantouService;
+import com.bright.star.service.tmp.TorihikisakiTantouService;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bright.star.infrastructure.common.PageResult;

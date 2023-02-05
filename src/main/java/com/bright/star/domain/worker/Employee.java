@@ -11,10 +11,10 @@ import java.util.List;
 @Data
 @Getter
 @Setter
-public class Worker implements EntityObject<Worker> {
+public class Employee implements EntityObject<Employee> {
 
     @Override
-    public boolean sameValueAs(Worker other) {
+    public boolean sameValueAs(Employee other) {
         return false;
     }
 
