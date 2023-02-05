@@ -1,7 +1,7 @@
 package com.bright.star.domain.worker;
 
 import com.bright.star.infrastructure.persistence.dao.*;
-import com.bright.star.service.SyainKeihiService;
+import com.bright.star.service.tmp.SyainKeihiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @author yanzou
  * @version V1.0.0
  * @date 2023/2/3
- * @description TODO
+ * @description Work application level service
  **/
 @Slf4j
 @Service
@@ -25,7 +25,11 @@ public class WorkerService {
     private final SyainKoutsuhiDao syainKoutsuhiDao;
     private final WorkerFactory workerFactory;
 
-    public void save(Worker worker){
-        syainKeihiService.saveBatch(workerFactory.createSyainKeihi(worker));
+    /**
+     * save worker domain
+     * @param employee
+     */
+    public void save(Employee employee){
+        syainKeihiService.saveBatch(workerFactory.createSyainKeihi(employee));
     }
 }

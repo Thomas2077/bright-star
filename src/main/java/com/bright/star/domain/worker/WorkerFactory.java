@@ -26,15 +26,15 @@ public class WorkerFactory {
     private final SyainRirekiDao syainRirekiDao;
     private final SyainKoutsuhiDao syainKoutsuhiDao;
 
-    public List<SyainKeihi> createSyainKeihi(Worker worker){
-        return worker.getSyainKeihiDTOList().stream()
+    public List<SyainKeihi> createSyainKeihi(Employee employee){
+        return employee.getSyainKeihiDTOList().stream()
                 .map(syainKeihiDTO -> BeanUtil.copyProperties(syainKeihiDTO, SyainKeihi.class))
                 .collect(Collectors.toList());
     }
 
-    public List<SyainKeireki> createSyainKeireki(Worker worker){
-        return worker.getSyainKeirekiDTOList() == null ?
-                ListUtil.empty() : BeanUtil.copyToList(worker.getSyainKeirekiDTOList(), SyainKeireki.class);
+    public List<SyainKeireki> createSyainKeireki(Employee employee){
+        return employee.getSyainKeirekiDTOList() == null ?
+                ListUtil.empty() : BeanUtil.copyToList(employee.getSyainKeirekiDTOList(), SyainKeireki.class);
     }
 
 

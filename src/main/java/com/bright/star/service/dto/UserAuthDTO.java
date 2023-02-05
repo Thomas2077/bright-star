@@ -1,7 +1,9 @@
 package com.bright.star.service.dto;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -29,6 +31,7 @@ public class UserAuthDTO implements Serializable {
     /**
      * 暗号化すべき、MD5関数で実施可能。
      */
+    @JsonIgnore
     @ApiModelProperty(value = "暗号化すべき、MD5関数で実施可能。")
     private String password;
 

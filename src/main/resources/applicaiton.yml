@@ -1,8 +1,8 @@
 database: mysql
 spring:
-#  mvc:
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
   datasource:
     schema: "classpath:db/${database}/schema.sql"
     data: "classpath:db/${database}/data.sql"
@@ -11,7 +11,7 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mapping/*.xml
-  type-aliases-package: com.align.user.entity.* #配置不正确会连不上mysql
+#  type-aliases-package: com.align.user.entity.* #配置不正确会连不上mysql
   global-config:
     db-config:
       logic-not-delete-value: 1
