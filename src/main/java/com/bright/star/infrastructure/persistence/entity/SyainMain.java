@@ -259,6 +259,9 @@ public class SyainMain extends Model<SyainMain> {
     @TableField("BOKOKU_KINNKYUU_RENNRAKU")
     private String bokokuKinnkyuuRennraku;
 
+    /**
+     * 学校名
+     */
     @TableField("GAKKOU_NAME")
     private String gakkouName;
 
@@ -270,9 +273,9 @@ public class SyainMain extends Model<SyainMain> {
     private Integer saisyuuGakureki;
 
     /**
-     * 学校名
+     * 専門名
      */
-    @ApiModelProperty(value = "学校名")
+    @ApiModelProperty(value = "専門名")
     @TableField("SENNMOM_NAME")
     private String sennmomName;
 

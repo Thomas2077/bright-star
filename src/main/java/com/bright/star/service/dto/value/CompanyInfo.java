@@ -1,4 +1,4 @@
-package com.bright.star.domain.worker.value;
+package com.bright.star.service.dto.value;
 
 /**
  * @author yanzou

@@ -11,16 +11,14 @@ package com.bright.star.service.dto;
 
 /**
 * <p>
-* 社員_経費
+* 社員_職歴
 * </p>
 *
 * @since 2023-02-02
 */
 @Data
 @Accessors(chain = true)
-
 @ApiModel(value = "SyainRirekiDTO对象", description = "社員_職歴")
-
 public class SyainRirekiDTO implements Serializable {
 
 
