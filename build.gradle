@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.5.7'
+    id 'org.springframework.boot' version '3.0.0'
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
@@ -27,8 +27,9 @@ dependencies {
     implementation 'com.github.ben-manes.caffeine:caffeine'
 
     implementation 'cn.hutool:hutool-all:5.8.11'
-    implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:3.0.3'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'
+    implementation 'com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter:4.0.0'
+
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

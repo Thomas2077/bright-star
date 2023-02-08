@@ -1,8 +1,10 @@
 package com.bright.star.service.tmp;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bright.star.controller.command.EmployeeQueryCommand;
+import com.bright.star.service.dto.SyainMainDTO;
 import org.springframework.stereotype.Service;
 import com.bright.star.infrastructure.persistence.entity.SyainMain;
 import com.bright.star.infrastructure.persistence.dao.SyainMainDao;
@@ -17,7 +19,7 @@ import java.util.List;
 @Service
 public class SyainMainService extends  ServiceImpl<SyainMainDao, SyainMain> {
 
-    public List<SyainMain> queryPreview(EmployeeQueryCommand command){
+    public List<SyainMainDTO> queryPreview(EmployeeQueryCommand command){
 
 
         QueryWrapper<SyainMain> previewQuery = new QueryWrapper<>();
@@ -32,6 +34,7 @@ public class SyainMainService extends  ServiceImpl<SyainMainDao, SyainMain> {
         }
         previewQuery = command.isOnDuty() ?
                 previewQuery.isNotNull("TAISYA_DATE") : previewQuery.isNull("TAISYA_DATE");
-        return this.list(previewQuery);
+        List<SyainMainDTO> syainMainDTOList = BeanUtil.copyToList(this.list(previewQuery), SyainMainDTO.class);
+        return syainMainDTOList;
     }
 }
