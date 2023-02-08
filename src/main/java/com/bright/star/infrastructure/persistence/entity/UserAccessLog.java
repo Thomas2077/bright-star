@@ -11,8 +11,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -26,8 +26,9 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @TableName("user_access_log")
-@ApiModel(value = "UserAccessLog对象", description = "")
-public class UserAccessLog extends Model<UserAccessLog> {
+@Schema(description = "UserAccessLog对象")
+public
+class UserAccessLog extends Model<UserAccessLog> {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,14 +38,14 @@ public class UserAccessLog extends Model<UserAccessLog> {
     /**
      * 画面ID
      */
-    @ApiModelProperty(value = "画面ID")
+    @Schema(description = "画面ID")
     @TableField("USER_ID")
     private Integer userId;
 
     /**
      * アクセス開始時間
      */
-    @ApiModelProperty(value = "アクセス開始時間")
+    @Schema(description = "アクセス開始時間")
     @TableField("GAMEN_ID")
     private String gamenId;
 

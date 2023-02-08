@@ -2,8 +2,8 @@ package com.bright.star.service.dto;
 
 import cn.hutool.core.util.StrUtil;
 import com.bright.star.infrastructure.persistence.entity.SyainMain;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -19,42 +19,43 @@ import java.time.LocalDate;
 @Data
 @Builder
 @Accessors(chain = true)
-@ApiModel(value = "worker preview object", description = "社員管理画面 dto")
-public class EmployeePreviewInfoDto {
+@Schema(description = "worker preview object")
+public
+class EmployeePreviewInfoDto {
 
-    @ApiModelProperty("社員番号")
+    @Schema(description = "社員番号")
     private Integer workerId;
 
-    @ApiModelProperty("所属会社")
+    @Schema(description = "所属会社")
     private String companyName;
 
-    @ApiModelProperty("社員名")
+    @Schema(description = "社員名")
     private String workerName;
 
-    @ApiModelProperty("性別")
+    @Schema(description = "性別")
     private Integer gender;
 
-    @ApiModelProperty("職業種類")
+    @Schema(description = "職業種類")
     private Integer jobCategoryId;
 
-    @ApiModelProperty("職業種類")
+    @Schema(description = "職業種類")
     private String jobCategory;
 
-    @ApiModelProperty("入社日")
+    @Schema(description = "入社日")
     private LocalDate onBoardDate;
 
-    @ApiModelProperty("退社日")
+    @Schema(description = "退社日")
     private LocalDate offBoardDate;
 
-    public static EmployeePreviewInfoDto build(SyainMainDTO main){
-           return EmployeePreviewInfoDto.builder()
-                    .workerId(main.syainId())
-                    .workerName(StrUtil.concat(true, main.firstNameKanji(), main.lastNameKanji()))
-                    .gender(main.seibetu())
-                    .jobCategoryId(main.syokugyoKind())
-                    .onBoardDate(main.nyuusyaDate())
-                    .offBoardDate(main.taisyaDate())
-                    .build();
+    public static EmployeePreviewInfoDto build(SyainMainDTO main) {
+        return EmployeePreviewInfoDto.builder()
+                .workerId(main.syainId())
+                .workerName(StrUtil.concat(true, main.firstNameKanji(), main.lastNameKanji()))
+                .gender(main.seibetu())
+                .jobCategoryId(main.syokugyoKind())
+                .onBoardDate(main.nyuusyaDate())
+                .offBoardDate(main.taisyaDate())
+                .build();
 
     }
 }

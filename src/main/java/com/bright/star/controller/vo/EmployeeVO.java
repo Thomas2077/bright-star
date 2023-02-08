@@ -3,7 +3,7 @@ package com.bright.star.controller.vo;
 import com.bright.star.controller.vo.value.BaseInfo;
 import com.bright.star.controller.vo.value.SyainKeirekiInfo;
 import com.bright.star.controller.vo.value.SyainRirekiInfo;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,8 +15,9 @@ import lombok.Data;
  **/
 @Data
 @Builder
-@ApiModel(value = "worker preview object", description = "社員管理画面 vo")
-public class EmployeeVO {
+@Schema(description = "worker preview object")
+public
+class EmployeeVO {
 
     private BaseInfo baseInfo;
 

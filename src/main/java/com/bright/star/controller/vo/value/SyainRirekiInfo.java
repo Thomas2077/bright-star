@@ -1,7 +1,7 @@
 package com.bright.star.controller.vo.value;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,8 +14,9 @@ import java.time.LocalDateTime;
  * @description
  **/
 @Data
-@ApiModel(value = "社員_職歴", description = "社員_職歴")
-public class SyainRirekiInfo {
+@Schema(description = "社員_職歴")
+public
+class SyainRirekiInfo {
 
 
     private Integer syainId;
@@ -23,73 +24,73 @@ public class SyainRirekiInfo {
     /**
      * 開始日
      */
-    @ApiModelProperty(value = "開始日")
+    @Schema(description = "開始日")
     private LocalDate kaisibi;
 
     /**
      * 終了日
      */
-    @ApiModelProperty(value = "終了日")
+    @Schema(description = "終了日")
     private LocalDate syuryobi;
 
     /**
      * 登録日
      */
-    @ApiModelProperty(value = "登録日")
+    @Schema(description = "登録日")
     private LocalDateTime tourokubi;
 
     /**
      * 更新日
      */
-    @ApiModelProperty(value = "更新日")
+    @Schema(description = "更新日")
     private LocalDateTime kousinnbi;
 
     /**
      * プロジェクト名
      */
-    @ApiModelProperty(value = "プロジェクト名")
+    @Schema(description = "プロジェクト名")
     private String pjName;
 
     /**
      * 対日フラグ
      */
-    @ApiModelProperty(value = "対日フラグ")
+    @Schema(description = "対日フラグ")
     private Integer tainitiFlag;
 
     /**
      * 場所
      */
-    @ApiModelProperty(value = "場所")
+    @Schema(description = "場所")
     private Integer basyo;
 
     /**
      * 規模
      */
-    @ApiModelProperty(value = "規模")
+    @Schema(description = "規模")
     private Integer kibo;
 
     /**
      * 業種
      */
-    @ApiModelProperty(value = "業種")
+    @Schema(description = "業種")
     private Integer gyosyu;
 
     /**
      * 開発環境
      */
-    @ApiModelProperty(value = "開発環境")
+    @Schema(description = "開発環境")
     private Integer kaihatukankyo;
 
     /**
      * 運用環境
      */
-    @ApiModelProperty(value = "運用環境")
+    @Schema(description = "運用環境")
     private Integer unyoukankyo;
 
     /**
      * 言語
      */
-    @ApiModelProperty(value = "言語")
+    @Schema(description = "言語")
     private String gengo;
 
     private String db;
@@ -97,25 +98,25 @@ public class SyainRirekiInfo {
     /**
      * ツール
      */
-    @ApiModelProperty(value = "ツール")
+    @Schema(description = "ツール")
     private String tool;
 
     /**
      * 担当
      */
-    @ApiModelProperty(value = "担当")
+    @Schema(description = "担当")
     private Integer tantou;
 
     /**
      * 作業範囲
      */
-    @ApiModelProperty(value = "作業範囲")
+    @Schema(description = "作業範囲")
     private Integer sagyohani;
 
     /**
      * 概要
      */
-    @ApiModelProperty(value = "概要")
+    @Schema(description = "概要")
     private String gaiyou;
 
 

@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -23,8 +23,9 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @TableName("user_auth")
-@ApiModel(value = "UserAuth对象", description = "")
-public class UserAuth extends Model<UserAuth> {
+@Schema(description = "UserAuth对象")
+public
+class UserAuth extends Model<UserAuth> {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,21 +41,21 @@ public class UserAuth extends Model<UserAuth> {
     /**
      * 暗号化すべき、MD5関数で実施可能。
      */
-    @ApiModelProperty(value = "暗号化すべき、MD5関数で実施可能。")
+    @Schema(description = "暗号化すべき、MD5関数で実施可能。")
     @TableField("PASSWORD")
     private String password;
 
     /**
      * S:システム管理者 A:統合管理者　B　営業担当　C経理担当　D：人事担当
      */
-    @ApiModelProperty(value = "S:システム管理者 A:統合管理者　B　営業担当　C経理担当　D：人事担当")
+    @Schema(description = "S:システム管理者 A:統合管理者　B　営業担当　C経理担当　D：人事担当")
     @TableField("USER_ROLE")
     private String userRole;
 
     /**
      * 有効・無効
      */
-    @ApiModelProperty(value = "有効・無効")
+    @Schema(description = "有効・無効")
     @TableField("IS_YOUKOU")
     private Integer isYoukou;
 

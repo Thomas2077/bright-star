@@ -1,72 +1,74 @@
 package com.bright.star.service.dto;
 
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import com.baomidou.mybatisplus.annotation.IdType;
-    import com.baomidou.mybatisplus.extension.activerecord.Model;
-    import com.baomidou.mybatisplus.annotation.TableId;
-    import java.time.LocalDateTime;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 
-    import io.swagger.annotations.ApiModel;
-    import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
-* <p>
-* 社員_経費
-* </p>
-*
-* @since 2023-02-08
-*/
+ * <p>
+ * 社員_経費
+ * </p>
+ *
+ * @since 2023-02-08
+ */
 
 
-@ApiModel(value = "SyainKeihiDTO对象", description = "社員_経費")
+@Schema(description = "SyainKeihiDTO对象")
 
-public record SyainKeihiDTO (
+public
+record SyainKeihiDTO(
 
-     Integer syainId,
-
-        /**
-        * 適用年月
-        */
-     String tekiyouNengetsu,
+        Integer syainId,
 
         /**
-        * 連番
-        */
-     Integer renban,
+         * 適用年月
+         */
+        String tekiyouNengetsu,
 
         /**
-        * 費目
-        */
-     Integer himoku,
+         * 連番
+         */
+        Integer renban,
 
         /**
-        * 金額
-        */
-     Integer kingaku,
+         * 費目
+         */
+        Integer himoku,
 
         /**
-        * 客先請求区分
-        */
-     Integer kyakusakiSeikyuKubun,
+         * 金額
+         */
+        Integer kingaku,
 
         /**
-        * 備考
-        */
-     String bikou,
+         * 客先請求区分
+         */
+        Integer kyakusakiSeikyuKubun,
 
         /**
-        * 登録日
-        */
-     LocalDateTime tourokubi,
+         * 備考
+         */
+        String bikou,
 
         /**
-        * 更新日
-        */
-     LocalDateTime kousinnbi
-){
+         * 登録日
+         */
+        LocalDateTime tourokubi,
 
-
+        /**
+         * 更新日
+         */
+        LocalDateTime kousinnbi
+) {
 }

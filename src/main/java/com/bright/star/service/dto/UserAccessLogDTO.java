@@ -1,44 +1,46 @@
 package com.bright.star.service.dto;
 
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import com.baomidou.mybatisplus.annotation.IdType;
-    import com.baomidou.mybatisplus.extension.activerecord.Model;
-    import com.baomidou.mybatisplus.annotation.TableId;
-    import java.time.LocalDateTime;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 
-    import io.swagger.annotations.ApiModel;
-    import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
-* <p>
-* 
-* </p>
-*
-* @since 2023-02-08
-*/
+ * <p>
+ *
+ * </p>
+ *
+ * @since 2023-02-08
+ */
 
 
-@ApiModel(value = "UserAccessLogDTO对象", description = "")
+@Schema(description = "UserAccessLogDTO对象")
 
-public record UserAccessLogDTO (
+public
+record UserAccessLogDTO(
 
-     Integer id,
-
-        /**
-        * 画面ID
-        */
-     Integer userId,
+        Integer id,
 
         /**
-        * アクセス開始時間
-        */
-     String gamenId,
+         * 画面ID
+         */
+        Integer userId,
 
-     LocalDateTime startTime
-){
+        /**
+         * アクセス開始時間
+         */
+        String gamenId,
 
-
+        LocalDateTime startTime
+) {
 }

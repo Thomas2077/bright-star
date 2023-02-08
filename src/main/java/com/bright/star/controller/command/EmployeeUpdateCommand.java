@@ -1,6 +1,6 @@
 package com.bright.star.controller.command;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -10,9 +10,7 @@ import lombok.Data;
  * @description
  **/
 @Data
-@ApiModel(value = "社員更新 command", description = "社員更新 command")
-public class EmployeeUpdateCommand {
-
-
-
+@Schema(description = "社員更新 command")
+public
+class EmployeeUpdateCommand {
 }

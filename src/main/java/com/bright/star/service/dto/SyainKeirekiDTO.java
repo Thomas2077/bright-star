@@ -1,115 +1,119 @@
 package com.bright.star.service.dto;
 
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import com.baomidou.mybatisplus.annotation.IdType;
-    import com.baomidou.mybatisplus.extension.activerecord.Model;
-    import java.time.LocalDate;
-    import com.baomidou.mybatisplus.annotation.TableId;
-    import java.time.LocalDateTime;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
-    import io.swagger.annotations.ApiModel;
-    import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDate;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
-* <p>
-* 社員マスタ_経歴
-* </p>
-*
-* @since 2023-02-08
-*/
+ * <p>
+ * 社員マスタ_経歴
+ * </p>
+ *
+ * @since 2023-02-08
+ */
 
 
-@ApiModel(value = "SyainKeirekiDTO对象", description = "社員マスタ_経歴")
+@Schema(description = "SyainKeirekiDTO对象")
 
-public record SyainKeirekiDTO (
+public
+record SyainKeirekiDTO(
 
-     Integer syainId,
-
-        /**
-        * 開始日
-        */
-     LocalDate kaisibi,
+        Integer syainId,
 
         /**
-        * 終了日
-        */
-     LocalDate syuryobi,
+         * 開始日
+         */
+        LocalDate kaisibi,
 
         /**
-        * プロジェクト名
-        */
-     String pjName,
+         * 終了日
+         */
+        LocalDate syuryobi,
 
         /**
-        * 対日かどうか
-        */
-     Integer tainitiFlag,
+         * プロジェクト名
+         */
+        String pjName,
 
         /**
-        * 開発場所
-        */
-     Integer basyo,
+         * 対日かどうか
+         */
+        Integer tainitiFlag,
 
         /**
-        * 開発規模
-        */
-     Integer kibo,
+         * 開発場所
+         */
+        Integer basyo,
 
         /**
-        * 開発業種
-        */
-     Integer gyosyu,
+         * 開発規模
+         */
+        Integer kibo,
 
         /**
-        * 開発環境
-        */
-     Integer kaihatukankyo,
+         * 開発業種
+         */
+        Integer gyosyu,
 
         /**
-        * 運用環境
-        */
-     Integer unyoukankyo,
+         * 開発環境
+         */
+        Integer kaihatukankyo,
 
         /**
-        * 言語
-        */
-     String gengo,
-
-     String db,
+         * 運用環境
+         */
+        Integer unyoukankyo,
 
         /**
-        * FW・IDE・ツール
-        */
-     String tool,
+         * 言語
+         */
+        String gengo,
+
+        String db,
 
         /**
-        * 担当
-        */
-     Integer tantou,
+         * FW・IDE・ツール
+         */
+        String tool,
 
         /**
-        * 作業範囲
-        */
-     Integer sagyohani,
+         * 担当
+         */
+        Integer tantou,
 
         /**
-        * 開発概要
-        */
-     String gaiyou,
+         * 作業範囲
+         */
+        Integer sagyohani,
 
         /**
-        * 登録日
-        */
-     LocalDateTime tourokubi,
+         * 開発概要
+         */
+        String gaiyou,
 
         /**
-        * 更新日
-        */
-     LocalDateTime kousinnbi
-){
+         * 登録日
+         */
+        LocalDateTime tourokubi,
 
-
+        /**
+         * 更新日
+         */
+        LocalDateTime kousinnbi
+) {
 }

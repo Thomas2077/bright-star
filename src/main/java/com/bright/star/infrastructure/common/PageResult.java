@@ -1,7 +1,7 @@
 package com.bright.star.infrastructure.common;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,22 +18,23 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-@ApiModel("分页数据")
-public class PageResult<T>{
+@Schema(description = "分页数据")
+public
+class PageResult<T> {
 
-    @ApiModelProperty("总数")
+    @Schema(description = "总数")
     private long total;
 
-    @ApiModelProperty("当前页数据")
+    @Schema(description = "当前页数据")
     private List<T> rows;
 
-    @ApiModelProperty("当page")
+    @Schema(description = "当page")
     private long currentPage;
 
-    @ApiModelProperty("总页数")
+    @Schema(description = "总页数")
     private long totalPage;
 
-    public PageResult (long total, List<T> rows ){
+    public PageResult(long total, List<T> rows) {
         this.total = total;
         this.rows = rows;
     }

@@ -1,87 +1,89 @@
 package com.bright.star.service.dto;
 
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import com.baomidou.mybatisplus.annotation.IdType;
-    import com.baomidou.mybatisplus.extension.activerecord.Model;
-    import com.baomidou.mybatisplus.annotation.TableId;
-    import java.time.LocalDateTime;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 
-    import io.swagger.annotations.ApiModel;
-    import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
-* <p>
-* 社員_給与
-* </p>
-*
-* @since 2023-02-08
-*/
+ * <p>
+ * 社員_給与
+ * </p>
+ *
+ * @since 2023-02-08
+ */
 
 
-@ApiModel(value = "SyainKyuyoDTO对象", description = "社員_給与")
+@Schema(description = "SyainKyuyoDTO对象")
 
-public record SyainKyuyoDTO (
+public
+record SyainKyuyoDTO(
 
-     Integer syainId,
-
-        /**
-        * 開始年月
-        */
-     String kaishiNengetsu,
+        Integer syainId,
 
         /**
-        * 終了年月: 最後の記録以外、NULL不可
-        */
-     String syuryoNengetsu,
+         * 開始年月
+         */
+        String kaishiNengetsu,
 
         /**
-        * 基本給
-        */
-     Integer kihonkyu,
+         * 終了年月: 最後の記録以外、NULL不可
+         */
+        String syuryoNengetsu,
 
         /**
-        * 職能給
-        */
-     Integer syokunoukyu,
+         * 基本給
+         */
+        Integer kihonkyu,
 
         /**
-        * 雇用保険番号
-        */
-     String koyouHokenNo,
+         * 職能給
+         */
+        Integer syokunoukyu,
 
         /**
-        * 年金番号
-        */
-     String nankinNo,
+         * 雇用保険番号
+         */
+        String koyouHokenNo,
 
         /**
-        * 年金基準額
-        */
-     Integer nankinKijyunGaku,
+         * 年金番号
+         */
+        String nankinNo,
 
         /**
-        * 健康保険番号
-        */
-     String kenkouHokenNo,
+         * 年金基準額
+         */
+        Integer nankinKijyunGaku,
 
         /**
-        * 備考
-        */
-     String bikou,
+         * 健康保険番号
+         */
+        String kenkouHokenNo,
 
         /**
-        * 登録日
-        */
-     LocalDateTime tourokubi,
+         * 備考
+         */
+        String bikou,
 
         /**
-        * 更新日
-        */
-     LocalDateTime kousinnbi
-){
+         * 登録日
+         */
+        LocalDateTime tourokubi,
 
-
+        /**
+         * 更新日
+         */
+        LocalDateTime kousinnbi
+) {
 }

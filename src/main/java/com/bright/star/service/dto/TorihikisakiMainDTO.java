@@ -1,154 +1,156 @@
 package com.bright.star.service.dto;
 
-    import com.baomidou.mybatisplus.annotation.TableName;
-    import com.baomidou.mybatisplus.extension.activerecord.Model;
-    import java.time.LocalDateTime;
-    import com.baomidou.mybatisplus.annotation.TableField;
-    import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
-    import io.swagger.annotations.ApiModel;
-    import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
-* <p>
-* 
-* </p>
-*
-* @since 2023-02-08
-*/
+ * <p>
+ *
+ * </p>
+ *
+ * @since 2023-02-08
+ */
 
 
-@ApiModel(value = "TorihikisakiMainDTO对象", description = "")
+@Schema(description = "TorihikisakiMainDTO对象")
 
-public record TorihikisakiMainDTO (
-
-        /**
-        * 自動連番
-        */
-     Integer torihikiId,
-
-     String torihikiNameAll,
-
-     String torihikiNameRyaku,
-
-     String yuubin,
+public
+record TorihikisakiMainDTO(
 
         /**
-        * 住所1
-        */
-     String jyusyo1,
+         * 自動連番
+         */
+        Integer torihikiId,
+
+        String torihikiNameAll,
+
+        String torihikiNameRyaku,
+
+        String yuubin,
 
         /**
-        * 住所2
-        */
-     String jyusyo2,
-
-     String tel,
-
-     String fax,
-
-     String url,
+         * 住所1
+         */
+        String jyusyo1,
 
         /**
-        * 備考
-        */
-     String bikou,
+         * 住所2
+         */
+        String jyusyo2,
+
+        String tel,
+
+        String fax,
+
+        String url,
 
         /**
-        * 論理削除　0:有効　1:削除
-        */
-     Integer deleteFlag,
+         * 備考
+         */
+        String bikou,
 
         /**
-        * 請求書の郵送有無　0：無し　1：有り
-        */
-     Integer seikyusyoKubun1,
+         * 論理削除　0:有効　1:削除
+         */
+        Integer deleteFlag,
 
         /**
-        * 特定ファイル名　0：無し　1：有り
-        */
-     Integer seikyusyoKubun2,
+         * 請求書の郵送有無　0：無し　1：有り
+         */
+        Integer seikyusyoKubun1,
 
         /**
-        * 案件名請求　0：無し　1：有り
-        */
-     Integer seikyusyoKubun3,
+         * 特定ファイル名　0：無し　1：有り
+         */
+        Integer seikyusyoKubun2,
 
         /**
-        * 納品書付き　0：無し　1：有り
-        */
-     Integer seikyusyoKubun4,
+         * 案件名請求　0：無し　1：有り
+         */
+        Integer seikyusyoKubun3,
 
         /**
-        * 請求書の提供　0：無し　1：本体　2：フォーマット
-        */
-     Integer seikyusyoKubun5,
+         * 納品書付き　0：無し　1：有り
+         */
+        Integer seikyusyoKubun4,
 
         /**
-        * 請求単位　0：会社別　1：作業員別／案件名別　2：現場別　3：職部別
-        */
-     Integer seikyusyoKubun6,
-
-     String seikyusyoKubun7,
-
-     String seikyusyoKubun8,
-
-     String seikyusyoKubun9,
-
-     String seikyusyoKubun10,
-
-     String seikyusyoKubun11,
+         * 請求書の提供　0：無し　1：本体　2：フォーマット
+         */
+        Integer seikyusyoKubun5,
 
         /**
-        * 本社指定
-        */
-     Integer honsya,
+         * 請求単位　0：会社別　1：作業員別／案件名別　2：現場別　3：職部別
+         */
+        Integer seikyusyoKubun6,
+
+        String seikyusyoKubun7,
+
+        String seikyusyoKubun8,
+
+        String seikyusyoKubun9,
+
+        String seikyusyoKubun10,
+
+        String seikyusyoKubun11,
 
         /**
-        * 本社口座
-        */
-     Integer honsyaKouza,
+         * 本社指定
+         */
+        Integer honsya,
 
         /**
-        * 金融機関コード
-        */
-     String kinyukikanCode,
+         * 本社口座
+         */
+        Integer honsyaKouza,
 
         /**
-        * 金融機関
-        */
-     String kinyukikanName,
+         * 金融機関コード
+         */
+        String kinyukikanCode,
 
         /**
-        * 支店名コード
-        */
-     String sitenCode,
+         * 金融機関
+         */
+        String kinyukikanName,
 
         /**
-        * 支店
-        */
-     String sitenName,
+         * 支店名コード
+         */
+        String sitenCode,
 
         /**
-        * 1:普通　2:当座
-        */
-     Integer kouzaKind,
+         * 支店
+         */
+        String sitenName,
 
         /**
-        * 口座番号
-        */
-     String kouzaNum,
+         * 1:普通　2:当座
+         */
+        Integer kouzaKind,
 
         /**
-        * 名義人
-        */
-     String meigiName,
+         * 口座番号
+         */
+        String kouzaNum,
 
-     LocalDateTime tourokubi,
+        /**
+         * 名義人
+         */
+        String meigiName,
 
-     LocalDateTime kousinnbi
-){
+        LocalDateTime tourokubi,
 
-
+        LocalDateTime kousinnbi
+) {
 }

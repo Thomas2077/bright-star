@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -22,8 +22,9 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @TableName("tg_setting")
-@ApiModel(value = "TgSetting对象", description = "")
-public class TgSetting extends Model<TgSetting> {
+@Schema(description = "TgSetting对象")
+public
+class TgSetting extends Model<TgSetting> {
 
     private static final long serialVersionUID = 1L;
 
