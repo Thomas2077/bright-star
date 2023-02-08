@@ -7,13 +7,13 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.bright.star.infrastructure.exception.BusinessException;
 import com.bright.star.service.dto.TgSettingDTO;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import com.bright.star.infrastructure.persistence.entity.TgSetting;
 import com.bright.star.infrastructure.persistence.dao.TgSettingDao;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
