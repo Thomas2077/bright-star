@@ -1,8 +1,8 @@
 package com.bright.star.infrastructure.common.result;
 
 import com.bright.star.infrastructure.common.PageResult;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * 返回结果
+ *
  * @author zyj
  * @since 2021-06-01
  */
@@ -21,25 +22,26 @@ import java.util.Map;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "返回结果对象", description = "返回结果")
-public class R<T> {
+@Schema(description = "返回结果对象")
+public
+class R<T> {
 
     /**
      * 业务状态码
      */
-    @ApiModelProperty(value = "业务状态码")
+    @Schema(description = "业务状态码")
     private Integer code;
 
     /**
      * 消息
      */
-    @ApiModelProperty(value = "消息信息")
+    @Schema(description = "消息信息")
     private String message;
 
     /**
      * 数据
      */
-    @ApiModelProperty(value = "数据")
+    @Schema(description = "数据")
     private T data;
 
     public static R success() {
@@ -52,6 +54,7 @@ public class R<T> {
 
     /**
      * 返回结果带分页数据
+     *
      * @param pageR
      * @return
      */
@@ -64,11 +67,11 @@ public class R<T> {
 
     /**
      * 返回结果带分页数据
+     *
      * @param pageR
      * @return
      */
     public static R pageSuccess(PageResult pageR) {
-
         return R.builder().code(HttpStatus.OK.value()).message("").data(pageR).build();
     }
 
