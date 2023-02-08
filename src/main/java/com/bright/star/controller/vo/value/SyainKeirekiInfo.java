@@ -1,4 +1,4 @@
-package com.bright.star.service.dto.value;
+package com.bright.star.controller.vo.value;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @ApiModel(value = "JobExperienceInfo業務経歴(SyainKeirekiDTO)", description = "業務経歴")
-public class BusinessExperienceInfo {
+public class SyainKeirekiInfo {
 
     private Integer syainId;
 

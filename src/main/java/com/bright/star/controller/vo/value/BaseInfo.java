@@ -1,6 +1,9 @@
-package com.bright.star.service.dto.value;
+package com.bright.star.controller.vo.value;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,6 +11,8 @@ import java.time.LocalDateTime;
 /**
  * 基本情報
  */
+@Data
+@ApiModel(value = "main info)", description = "main info")
 public class BaseInfo {
 
 

@@ -46,14 +46,14 @@ public class EmployeePreviewInfoDto {
     @ApiModelProperty("退社日")
     private LocalDate offBoardDate;
 
-    public static EmployeePreviewInfoDto build(SyainMain main){
+    public static EmployeePreviewInfoDto build(SyainMainDTO main){
            return EmployeePreviewInfoDto.builder()
-                    .workerId(main.getSyainId())
-                    .workerName(StrUtil.concat(true, main.getFirstNameKanji(), main.getLastNameKanji()))
-                    .gender(main.getSeibetu())
-                    .jobCategoryId(main.getSyokugyoKind())
-                    .onBoardDate(main.getNyuusyaDate())
-                    .offBoardDate(main.getTaisyaDate())
+                    .workerId(main.syainId())
+                    .workerName(StrUtil.concat(true, main.firstNameKanji(), main.lastNameKanji()))
+                    .gender(main.seibetu())
+                    .jobCategoryId(main.syokugyoKind())
+                    .onBoardDate(main.nyuusyaDate())
+                    .offBoardDate(main.taisyaDate())
                     .build();
 
     }

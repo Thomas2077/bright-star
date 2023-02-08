@@ -1,348 +1,297 @@
 package com.bright.star.service.dto;
 
+    import com.baomidou.mybatisplus.annotation.TableName;
+    import com.baomidou.mybatisplus.annotation.IdType;
+    import com.baomidou.mybatisplus.extension.activerecord.Model;
     import java.time.LocalDate;
+    import com.baomidou.mybatisplus.annotation.TableId;
     import java.time.LocalDateTime;
+    import com.baomidou.mybatisplus.annotation.TableField;
     import java.io.Serializable;
 
     import io.swagger.annotations.ApiModel;
     import io.swagger.annotations.ApiModelProperty;
-    import lombok.Data;
-    import lombok.experimental.Accessors;
+
 
 /**
 * <p>
 * 
 * </p>
 *
-* @since 2023-02-02
+* @since 2023-02-08
 */
-@Data
-@Accessors(chain = true)
+
+
 @ApiModel(value = "SyainMainDTO对象", description = "")
-public class SyainMainDTO implements Serializable {
+public record SyainMainDTO (
 
+     Integer syainId,
 
-    private Integer syainId;
+        /**
+        * 社員名（漢字）＿姓
+        */
+     String firstNameKanji,
 
-    /**
-    * 社員名（漢字）＿姓
-    */
-    @ApiModelProperty(value = "社員名（漢字）＿姓")
-    private String firstNameKanji;
+        /**
+        * 社員名（漢字）＿名
+        */
+     String lastNameKanji,
 
-    /**
-    * 社員名（漢字）＿名
-    */
-    @ApiModelProperty(value = "社員名（漢字）＿名")
-    private String lastNameKanji;
+        /**
+        * 社員名（カタカナ）＿姓
+        */
+     String firstNameKana,
 
-    /**
-    * 社員名（カタカナ）＿姓
-    */
-    @ApiModelProperty(value = "社員名（カタカナ）＿姓")
-    private String firstNameKana;
+        /**
+        * 社員名（カタカナ）＿名
+        */
+     String lastNameKana,
 
-    /**
-    * 社員名（カタカナ）＿名
-    */
-    @ApiModelProperty(value = "社員名（カタカナ）＿名")
-    private String lastNameKana;
+        /**
+        * 社員名（英語）＿性
+        */
+     String firstNameEigo,
 
-    /**
-    * 社員名（英語）＿性
-    */
-    @ApiModelProperty(value = "社員名（英語）＿性")
-    private String firstNameEigo;
+        /**
+        * 社員名（英語）＿名
+        */
+     String lastNameEigo,
 
-    /**
-    * 社員名（英語）＿名
-    */
-    @ApiModelProperty(value = "社員名（英語）＿名")
-    private String lastNameEigo;
+        /**
+        * 性別 0:女 1:男
+        */
+     Integer seibetu,
 
-    /**
-    * 性別 0:女 1:男
-    */
-    @ApiModelProperty(value = "性別 0:女 1:男")
-    private Integer seibetu;
+        /**
+        * 誕生日
+        */
+     LocalDate tanjyobi,
 
-    /**
-    * 誕生日
-    */
-    @ApiModelProperty(value = "誕生日")
-    private LocalDate tanjyobi;
+        /**
+        * 国籍
+        */
+     Integer kokuseki,
 
-    /**
-    * 国籍
-    */
-    @ApiModelProperty(value = "国籍")
-    private Integer kokuseki;
+        /**
+        * 出身地
+        */
+     String syussinn,
 
-    /**
-    * 出身地
-    */
-    @ApiModelProperty(value = "出身地")
-    private String syussinn;
+        /**
+        * 配偶者有り無し ０：なし　１：あり
+        */
+     Integer haigusya,
 
-    /**
-    * 配偶者有り無し ０：なし　１：あり
-    */
-    @ApiModelProperty(value = "配偶者有り無し ０：なし　１：あり")
-    private Integer haigusya;
+     String passportNum,
 
-    private String passportNum;
+     LocalDate passportEndDate,
 
-    private LocalDate passportEndDate;
+        /**
+        * ビザ期間
+        */
+     Integer visaKikan,
 
-    /**
-    * ビザ期間
-    */
-    @ApiModelProperty(value = "ビザ期間")
-    private Integer visaKikan;
+        /**
+        * ビザ有効日
+        */
+     LocalDate visaEndDate,
 
-    /**
-    * ビザ有効日
-    */
-    @ApiModelProperty(value = "ビザ有効日")
-    private LocalDate visaEndDate;
+        /**
+        * 在留資格
+        */
+     Integer zairyuSikaku,
 
-    /**
-    * 在留資格
-    */
-    @ApiModelProperty(value = "在留資格")
-    private Integer zairyuSikaku;
+        /**
+        * マイナンバー
+        */
+     String kojinNum,
 
-    /**
-    * マイナンバー
-    */
-    @ApiModelProperty(value = "マイナンバー")
-    private String kojinNum;
+        /**
+        * 在留番号
+        */
+     String zairyuNum,
 
-    /**
-    * 在留番号
-    */
-    @ApiModelProperty(value = "在留番号")
-    private String zairyuNum;
+        /**
+        * 所属会社
+        */
+     Integer syozokuKaisya,
 
-    /**
-    * 所属会社
-    */
-    @ApiModelProperty(value = "所属会社")
-    private Integer syozokuKaisya;
+        /**
+        * 入社日
+        */
+     LocalDate nyuusyaDate,
 
-    /**
-    * 入社日
-    */
-    @ApiModelProperty(value = "入社日")
-    private LocalDate nyuusyaDate;
+        /**
+        * 退社日
+        */
+     LocalDate taisyaDate,
 
-    /**
-    * 退社日
-    */
-    @ApiModelProperty(value = "退社日")
-    private LocalDate taisyaDate;
+        /**
+        * 職業種類
+        */
+     Integer syokugyoKind,
 
-    /**
-    * 職業種類
-    */
-    @ApiModelProperty(value = "職業種類")
-    private Integer syokugyoKind;
+        /**
+        * 来日時期
+        */
+     LocalDate rainitiDate,
 
-    /**
-    * 来日時期
-    */
-    @ApiModelProperty(value = "来日時期")
-    private LocalDate rainitiDate;
+        /**
+        * 備考
+        */
+     String bikou,
 
-    /**
-    * 備考
-    */
-    @ApiModelProperty(value = "備考")
-    private String bikou;
+        /**
+        * 日本の住所の郵便
+        */
+     String yuubin,
 
-    /**
-    * 日本の住所の郵便
-    */
-    @ApiModelProperty(value = "日本の住所の郵便")
-    private String yuubin;
+        /**
+        * 日本の住所1
+        */
+     String jyusyo1,
 
-    /**
-    * 日本の住所1
-    */
-    @ApiModelProperty(value = "日本の住所1")
-    private String jyusyo1;
+        /**
+        * 日本の住所2
+        */
+     String jyusyo2,
 
-    /**
-    * 日本の住所2
-    */
-    @ApiModelProperty(value = "日本の住所2")
-    private String jyusyo2;
+        /**
+        * 最寄駅
+        */
+     String moyoriEki,
 
-    /**
-    * 最寄駅
-    */
-    @ApiModelProperty(value = "最寄駅")
-    private String moyoriEki;
+        /**
+        * 携帯電話
+        */
+     String tel,
 
-    /**
-    * 携帯電話
-    */
-    @ApiModelProperty(value = "携帯電話")
-    private String tel;
+        /**
+        * メールアドレス
+        */
+     String email,
 
-    /**
-    * メールアドレス
-    */
-    @ApiModelProperty(value = "メールアドレス")
-    private String email;
+     String wechat,
 
-    private String wechat;
+     String line,
 
-    private String line;
+        /**
+        * 母国の住所
+        */
+     String bokokuJyusyo,
 
-    /**
-    * 母国の住所
-    */
-    @ApiModelProperty(value = "母国の住所")
-    private String bokokuJyusyo;
+        /**
+        * 母国の緊急連絡先
+        */
+     String bokokuKinnkyuuRennraku,
 
-    /**
-    * 母国の緊急連絡先
-    */
-    @ApiModelProperty(value = "母国の緊急連絡先")
-    private String bokokuKinnkyuuRennraku;
+     String gakkouName,
 
-    /**
-     * 学校名
-     */
-    @ApiModelProperty(value = "学校名")
-    private String gakkouName;
+        /**
+        * 最終学歴
+        */
+     Integer saisyuuGakureki,
 
-    /**
-    * 最終学歴
-    */
-    @ApiModelProperty(value = "最終学歴")
-    private Integer saisyuuGakureki;
+        /**
+        * 学校名
+        */
+     String sennmomName,
 
-    /**
-    * 専門名
-    */
-    @ApiModelProperty(value = "専門名")
-    private String sennmomName;
+        /**
+        * 卒業年月日
+        */
+     LocalDate sotugyoDate,
 
-    /**
-    * 卒業年月日
-    */
-    @ApiModelProperty(value = "卒業年月日")
-    private LocalDate sotugyoDate;
+        /**
+        * 業務年数
+        */
+     Float gyumuNensu,
 
-    /**
-    * 業務年数
-    */
-    @ApiModelProperty(value = "業務年数/IT関連実務年数")
-    private Float gyumuNensu;
+        /**
+        * イニシャル名
+        */
+     String initialName,
 
-    /**
-    * イニシャル名
-    */
-    @ApiModelProperty(value = "イニシャル名")
-    private String initialName;
+     String itOs,
 
-    private String itOs;
+        /**
+        * 言語
+        */
+     String itGengo,
 
-    /**
-    * 言語
-    */
-    @ApiModelProperty(value = "言語")
-    private String itGengo;
+     String itDb,
 
-    private String itDb;
+     String itWebServer,
 
-    private String itWebServer;
+     String itFw,
 
-    private String itFw;
+        /**
+        * その他
+        */
+     String itOther,
 
-    /**
-    * その他
-    */
-    @ApiModelProperty(value = "その他")
-    private String itOther;
+        /**
+        * 備考及び自己紹介
+        */
+     String itBikou,
 
-    /**
-    * 備考及び自己紹介
-    */
-    @ApiModelProperty(value = "備考及び自己紹介")
-    private String itBikou;
+        /**
+        * 社員コード
+        */
+     String employeecode,
 
-    /**
-    * 社員コード
-    */
-    @ApiModelProperty(value = "社員コード")
-    private String employeecode;
+     String comment,
 
-    private String comment;
+        /**
+        * 金融機関コード
+        */
+     String kinyukikanCode,
 
-    /**
-    * 金融機関コード
-    */
-    @ApiModelProperty(value = "金融機関コード")
-    private String kinyukikanCode;
+        /**
+        * 金融機関名
+        */
+     String kinyukikanName,
 
-    /**
-    * 金融機関名
-    */
-    @ApiModelProperty(value = "金融機関名")
-    private String kinyukikanName;
+        /**
+        * 支店名コード
+        */
+     String sitenCode,
 
-    /**
-    * 支店名コード
-    */
-    @ApiModelProperty(value = "支店名コード")
-    private String sitenCode;
+        /**
+        * 支店名
+        */
+     String sitenName,
 
-    /**
-    * 支店名
-    */
-    @ApiModelProperty(value = "支店名")
-    private String sitenName;
+        /**
+        * 口座種類
+        */
+     Integer kouzaKind,
 
-    /**
-    * 口座種類
-    */
-    @ApiModelProperty(value = "口座種類")
-    private Integer kouzaKind;
+        /**
+        * 口座番号
+        */
+     String kouzaNum,
 
-    /**
-    * 口座番号
-    */
-    @ApiModelProperty(value = "口座番号")
-    private String kouzaNum;
+        /**
+        * 名義人
+        */
+     Integer meigiName,
 
-    /**
-    * 名義人
-    */
-    @ApiModelProperty(value = "名義人")
-    private Integer meigiName;
+        /**
+        * 論理削除フラグ
+        */
+     Integer deleteFlag,
 
-    /**
-    * 論理削除フラグ
-    */
-    @ApiModelProperty(value = "論理削除フラグ")
-    private Integer deleteFlag;
+        /**
+        * 更新日
+        */
+     LocalDateTime kousinnbi,
 
-    /**
-    * 更新日
-    */
-    @ApiModelProperty(value = "更新日")
-    private LocalDateTime kousinnbi;
-
-    /**
-    * 登録日
-    */
-    @ApiModelProperty(value = "登録日")
-    private LocalDateTime tourokubi;
-
-
+        /**
+        * 登録日
+        */
+     LocalDateTime tourokubi
+){
 
 
 }

@@ -13,4 +13,6 @@ import lombok.Data;
 @ApiModel(value = "社員更新 command", description = "社員更新 command")
 public class EmployeeUpdateCommand {
 
+
+
 }

@@ -1,87 +1,82 @@
 package com.bright.star.service.dto;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
+    import com.baomidou.mybatisplus.annotation.TableName;
+    import com.baomidou.mybatisplus.annotation.IdType;
+    import com.baomidou.mybatisplus.extension.activerecord.Model;
+    import com.baomidou.mybatisplus.annotation.TableId;
+    import java.time.LocalDateTime;
+    import com.baomidou.mybatisplus.annotation.TableField;
+    import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.experimental.Accessors;
+    import io.swagger.annotations.ApiModel;
+    import io.swagger.annotations.ApiModelProperty;
+
 
 /**
- * <p>
- * 社員_交通費
- * </p>
- *
- * @since 2023-02-02
- */
-@Data
-@Accessors(chain = true)
+* <p>
+* 社員_交通費
+* </p>
+*
+* @since 2023-02-08
+*/
+
+
 @ApiModel(value = "SyainKoutsuhiDTO对象", description = "社員_交通費")
-public class SyainKoutsuhiDTO implements Serializable {
 
+public record SyainKoutsuhiDTO (
 
-    private Integer syainId;
+     Integer syainId,
 
-    /**
-     * 適用年月
-     */
-    @ApiModelProperty(value = "適用年月")
-    private String tekiyouNengetsu;
+        /**
+        * 適用年月
+        */
+     String tekiyouNengetsu,
 
-    /**
-     * 連番
-     */
-    @ApiModelProperty(value = "連番")
-    private Integer renban;
+        /**
+        * 連番
+        */
+     Integer renban,
 
-    /**
-     * 日付
-     */
-    @ApiModelProperty(value = "日付")
-    private Integer himoku;
+        /**
+        * 日付
+        */
+     Integer himoku,
 
-    /**
-     * 出発駅
-     */
-    @ApiModelProperty(value = "出発駅")
-    private String syuppatsuEki;
+        /**
+        * 出発駅
+        */
+     String syuppatsuEki,
 
-    /**
-     * 到着駅
-     */
-    @ApiModelProperty(value = "到着駅")
-    private String touchakuEki;
+        /**
+        * 到着駅
+        */
+     String touchakuEki,
 
-    /**
-     * 金額
-     */
-    @ApiModelProperty(value = "金額")
-    private Integer kingaku;
+        /**
+        * 金額
+        */
+     Integer kingaku,
 
-    /**
-     * 客先請求区分
-     */
-    @ApiModelProperty(value = "客先請求区分")
-    private Integer kyakusakiSeikyuKubun;
+        /**
+        * 客先請求区分
+        */
+     Integer kyakusakiSeikyuKubun,
 
-    /**
-     * 備考
-     */
-    @ApiModelProperty(value = "備考")
-    private String bikou;
+        /**
+        * 備考
+        */
+     String bikou,
 
-    /**
-     * 登録日
-     */
-    @ApiModelProperty(value = "登録日")
-    private LocalDateTime tourokubi;
+        /**
+        * 登録日
+        */
+     LocalDateTime tourokubi,
 
-    /**
-     * 更新日
-     */
-    @ApiModelProperty(value = "更新日")
-    private LocalDateTime kousinnbi;
+        /**
+        * 更新日
+        */
+     LocalDateTime kousinnbi
+){
 
 
 }

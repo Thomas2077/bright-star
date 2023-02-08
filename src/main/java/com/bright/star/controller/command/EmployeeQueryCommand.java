@@ -15,17 +15,20 @@ import javax.validation.constraints.NotNull;
 @Data
 @ApiModel(value = "社員管理画面検索 command", description = "社員管理画面検索 command")
 public class EmployeeQueryCommand {
-        @ApiModelProperty("所属会社Id")
-        private Integer companyId;
+    @ApiModelProperty("所属会社Id")
+    private Integer companyId;
 
-        @ApiModelProperty("社員名")
-        private String workerName;
+    @ApiModelProperty("社員名")
+    private String workerName;
 
-        @ApiModelProperty("職業種類-ID")
-        private Integer jobCategoryId;
+    @ApiModelProperty("職業種類-ID")
+    private Integer jobCategoryId;
 
-        @NotNull
-        @ApiModelProperty("在職/非在職")
-        private boolean onDuty;
+    @NotNull
+    @ApiModelProperty("在職/非在職")
+    private boolean onDuty;
+
+    @ApiModelProperty("在職/非在職")
+    private Integer syainId;
 
 }

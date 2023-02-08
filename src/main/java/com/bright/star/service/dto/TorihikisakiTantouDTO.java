@@ -1,65 +1,64 @@
 package com.bright.star.service.dto;
 
-import java.io.Serializable;
+    import com.baomidou.mybatisplus.annotation.TableName;
+    import com.baomidou.mybatisplus.annotation.IdType;
+    import com.baomidou.mybatisplus.extension.activerecord.Model;
+    import com.baomidou.mybatisplus.annotation.TableId;
+    import com.baomidou.mybatisplus.annotation.TableField;
+    import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.experimental.Accessors;
+    import io.swagger.annotations.ApiModel;
+    import io.swagger.annotations.ApiModelProperty;
+
 
 /**
- * <p>
- * customer dto
- * </p>
- *
- * @since 2023-02-02
- */
-@Data
-@Accessors(chain = true)
+* <p>
+* 
+* </p>
+*
+* @since 2023-02-08
+*/
+
+
 @ApiModel(value = "TorihikisakiTantouDTO对象", description = "")
 
-public class TorihikisakiTantouDTO implements Serializable {
+public record TorihikisakiTantouDTO (
 
+        /**
+        * 担当者ID
+        */
+     Integer tantouId,
 
-    /**
-     * 担当者ID
-     */
-    @ApiModelProperty(value = "担当者ID")
-    private Integer tantouId;
+        /**
+        * 担当者ID
+        */
+     Integer torihikiId,
 
-    /**
-     * 担当者ID
-     */
-    @ApiModelProperty(value = "担当者ID")
-    private Integer torihikiId;
+     String firstName,
 
-    private String firstName;
+     String lastName,
 
-    private String lastName;
+        /**
+        * 所属: 管理本部など
+        */
+     String syozoku,
 
-    /**
-     * 所属: 管理本部など
-     */
-    @ApiModelProperty(value = "所属: 管理本部など")
-    private String syozoku;
+        /**
+        * 役職: 部長など
+        */
+     String yakusyoku,
 
-    /**
-     * 役職: 部長など
-     */
-    @ApiModelProperty(value = "役職: 部長など")
-    private String yakusyoku;
+     String mail,
 
-    private String mail;
+     String tel,
 
-    private String tel;
+        /**
+        * 事務関連（請求・外注など）MAIL: 1:TO 2:CC
+        */
+     Integer jimuMail,
 
-    /**
-     * 事務関連（請求・外注など）MAIL: 1:TO 2:CC
-     */
-    @ApiModelProperty(value = "事務関連（請求・外注など）MAIL: 1:TO 2:CC")
-    private Integer jimuMail;
-
-    private String bikou;
+     String bikou
+){
 
 
 }

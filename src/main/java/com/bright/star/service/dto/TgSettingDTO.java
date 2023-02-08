@@ -1,41 +1,45 @@
 package com.bright.star.service.dto;
 
+    import com.baomidou.mybatisplus.annotation.TableName;
+    import com.baomidou.mybatisplus.annotation.IdType;
+    import com.baomidou.mybatisplus.extension.activerecord.Model;
+    import com.baomidou.mybatisplus.annotation.TableId;
+    import com.baomidou.mybatisplus.annotation.TableField;
     import java.io.Serializable;
 
     import io.swagger.annotations.ApiModel;
-    import lombok.Data;
-    import lombok.experimental.Accessors;
+    import io.swagger.annotations.ApiModelProperty;
+
 
 /**
 * <p>
-*  setting table
+* 
 * </p>
 *
-* @since 2023-02-02
+* @since 2023-02-08
 */
-@Data
-@Accessors(chain = true)
+
+
 @ApiModel(value = "TgSettingDTO对象", description = "")
-public class TgSettingDTO implements Serializable {
 
+public record TgSettingDTO (
 
-    private Integer category1;
+     Integer category1,
 
-    private Integer category2;
+     Integer category2,
 
-    private Integer category3;
+     Integer category3,
 
-    private String value1;
+     String value1,
 
-    private String value2;
+     String value2,
 
-    private String value3;
+     String value3,
 
-    private String value4;
+     String value4,
 
-    private String value5;
-
-
+     String value5
+){
 
 
 }

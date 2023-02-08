@@ -1,41 +1,44 @@
 package com.bright.star.service.dto;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
+    import com.baomidou.mybatisplus.annotation.TableName;
+    import com.baomidou.mybatisplus.annotation.IdType;
+    import com.baomidou.mybatisplus.extension.activerecord.Model;
+    import com.baomidou.mybatisplus.annotation.TableId;
+    import java.time.LocalDateTime;
+    import com.baomidou.mybatisplus.annotation.TableField;
+    import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.experimental.Accessors;
+    import io.swagger.annotations.ApiModel;
+    import io.swagger.annotations.ApiModelProperty;
+
 
 /**
- * <p>
- *
- * </p>
- *
- * @since 2023-02-02
- */
-@Data
-@Accessors(chain = true)
+* <p>
+* 
+* </p>
+*
+* @since 2023-02-08
+*/
+
+
 @ApiModel(value = "UserAccessLogDTO对象", description = "")
-public class UserAccessLogDTO implements Serializable {
 
+public record UserAccessLogDTO (
 
-    private Integer id;
+     Integer id,
 
-    /**
-     * 画面ID
-     */
-    @ApiModelProperty(value = "画面ID")
-    private Integer userId;
+        /**
+        * 画面ID
+        */
+     Integer userId,
 
-    /**
-     * アクセス開始時間
-     */
-    @ApiModelProperty(value = "アクセス開始時間")
-    private String gamenId;
+        /**
+        * アクセス開始時間
+        */
+     String gamenId,
 
-    private LocalDateTime startTime;
+     LocalDateTime startTime
+){
 
 
 }
