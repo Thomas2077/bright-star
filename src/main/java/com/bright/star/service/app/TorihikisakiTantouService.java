@@ -1,4 +1,4 @@
-package com.bright.star.service.tmp;
+package com.bright.star.service.app;
 
 import org.springframework.stereotype.Service;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;

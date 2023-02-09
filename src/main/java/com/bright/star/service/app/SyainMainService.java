@@ -1,4 +1,4 @@
-package com.bright.star.service.tmp;
+package com.bright.star.service.app;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
@@ -23,16 +23,16 @@ public class SyainMainService extends  ServiceImpl<SyainMainDao, SyainMain> {
 
 
         QueryWrapper<SyainMain> previewQuery = new QueryWrapper<>();
-        if(command.getCompanyId() != null){
-            previewQuery.eq("SYOZOKU_KAISYA", command.getCompanyId());
+        if(command.companyId() != null){
+            previewQuery.eq("SYOZOKU_KAISYA", command.companyId());
         }
-        if(StrUtil.isNotEmpty(command.getWorkerName())){
-            previewQuery.eq("CONCAT(FIRST_NAME_KANJI, LAST_NAME_KANJI)", command.getWorkerName());
+        if(StrUtil.isNotEmpty(command.workerName())){
+            previewQuery.eq("CONCAT(FIRST_NAME_KANJI, LAST_NAME_KANJI)", command.workerName());
         }
-        if(command.getJobCategoryId() != null){
-            previewQuery.eq("SYOKUGYO_KIND", command.getJobCategoryId());
+        if(command.jobCategoryId() != null){
+            previewQuery.eq("SYOKUGYO_KIND", command.jobCategoryId());
         }
-        previewQuery = command.isOnDuty() ?
+        previewQuery = command.onDuty()?
                 previewQuery.isNotNull("TAISYA_DATE") : previewQuery.isNull("TAISYA_DATE");
         List<SyainMainDTO> syainMainDTOList = BeanUtil.copyToList(this.list(previewQuery), SyainMainDTO.class);
         return syainMainDTOList;

@@ -7,6 +7,10 @@ spring:
     schema: "classpath:db/${database}/schema.sql"
     data: "classpath:db/${database}/data.sql"
     sql-script-encoding: UTF-8
+springdoc:
+  version: '1.0.0'
+  swagger-ui:
+    use-root-path: true
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

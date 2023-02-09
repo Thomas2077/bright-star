@@ -14,8 +14,7 @@ import java.util.List;
  * @description社員_info_dto
  **/
 @Schema(description = "worker dto object")
-public
-record EmployeeDto(
+public record EmployeeDto(
         SyainMainDTO syainMainDTO,
         List<SyainRirekiDTO> syainRirekiDTOList,
         List<SyainKeirekiDTO> businessExperienceDTOList
