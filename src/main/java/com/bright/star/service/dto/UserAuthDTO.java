@@ -23,8 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "UserAuthDTO对象")
 
-public
-record UserAuthDTO(
+public record UserAuthDTO(
 
         Integer userId,
 

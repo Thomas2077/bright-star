@@ -26,8 +26,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "UserAccessLogDTO对象")
 
-public
-record UserAccessLogDTO(
+public record UserAccessLogDTO(
 
         Integer id,
 

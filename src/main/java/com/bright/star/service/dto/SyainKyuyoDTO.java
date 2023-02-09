@@ -26,8 +26,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "SyainKyuyoDTO对象")
 
-public
-record SyainKyuyoDTO(
+public record SyainKyuyoDTO(
 
         Integer syainId,
 

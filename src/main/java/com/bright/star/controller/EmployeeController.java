@@ -25,8 +25,7 @@ import java.util.stream.Collectors;
  * @description
  **/
 @Slf4j
-//@Api(tags = "社员")
-@Tag(name = "社员 contoller")
+@Tag(name = "社员")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/employee-manage")
@@ -75,7 +74,7 @@ public class EmployeeController {
     }
 
     /**
-     * ID拆、で社員検索
+     * IDで社員検索
      *
      * @param id
      * @return

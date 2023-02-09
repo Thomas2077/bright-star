@@ -23,8 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "TorihikisakiTantouDTO对象")
 
-public
-record TorihikisakiTantouDTO(
+public record TorihikisakiTantouDTO(
 
         /**
          * 担当者ID

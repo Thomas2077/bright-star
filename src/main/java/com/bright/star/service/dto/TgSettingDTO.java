@@ -23,8 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "TgSettingDTO对象")
 
-public
-record TgSettingDTO(
+public record TgSettingDTO(
 
         Integer category1,
 

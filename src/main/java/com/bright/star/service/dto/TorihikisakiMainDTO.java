@@ -24,8 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "TorihikisakiMainDTO对象")
 
-public
-record TorihikisakiMainDTO(
+public record TorihikisakiMainDTO(
 
         /**
          * 自動連番
