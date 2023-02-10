@@ -15,7 +15,6 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mapping/*.xml
-#  type-aliases-package: com.align.user.entity.* #配置不正确会连不上mysql
   global-config:
     db-config:
       logic-not-delete-value: 1
