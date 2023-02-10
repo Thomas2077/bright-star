@@ -13,7 +13,7 @@ import lombok.Data;
  **/
 @Schema(description = "社員管理画面検索 command")
 public record EmployeeQueryCommand(
-        @Parameter(description = "所属会社Id")
+        @Schema(description = "所属会社Id")
         Integer companyId,
 
         @Schema(description = "社員名")
