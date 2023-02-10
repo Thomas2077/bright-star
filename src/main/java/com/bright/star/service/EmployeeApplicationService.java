@@ -1,22 +1,28 @@
 package com.bright.star.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.bright.star.controller.assembler.KeirekiMapper;
+import com.bright.star.controller.assembler.MainMapper;
+import com.bright.star.controller.assembler.RirekiMapper;
 import com.bright.star.controller.command.EmployeeQueryCommand;
 import com.bright.star.controller.command.EmployeeSaveCommand;
 import com.bright.star.controller.command.EmployeeUpdateCommand;
+import com.bright.star.infrastructure.exception.BusinessException;
 import com.bright.star.infrastructure.persistence.entity.SyainKeireki;
 import com.bright.star.infrastructure.persistence.entity.SyainMain;
 import com.bright.star.infrastructure.persistence.entity.SyainRireki;
-import com.bright.star.service.dto.*;
 import com.bright.star.service.app.SyainKeirekiService;
 import com.bright.star.service.app.SyainMainService;
 import com.bright.star.service.app.SyainRirekiService;
 import com.bright.star.service.app.TgSettingService;
+import com.bright.star.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -33,10 +39,9 @@ public class EmployeeApplicationService {
     private final SyainMainService mainService;
     private final SyainRirekiService rirekiService;
     private final SyainKeirekiService keirekiService;
-
     private final TgSettingService settingService;
 
-    public List<EmployeePreviewInfoDto> previewEmployees(EmployeeQueryCommand command){
+    public List<EmployeePreviewInfoDto> previewEmployees(EmployeeQueryCommand command) {
 
         List<SyainMainDTO> syainMainDTOList = mainService.queryPreview(command);
 
@@ -54,24 +59,55 @@ public class EmployeeApplicationService {
         }).collect(Collectors.toList());
     }
 
-    public void update(EmployeeUpdateCommand updateCommand){
+    @Transactional
+    public void update(EmployeeUpdateCommand updateCommand) {
+        SyainMain syainMain = mainService.getById(updateCommand.syainMainDTO().syainId());
+        if (syainMain == null) {
+            throw new BusinessException("worker info not exist");
+        }
+        mainService.save(BeanUtil.copyProperties(updateCommand.syainMainDTO(), SyainMain.class));
 
+        Optional.of(updateCommand.syainRirekiDTOList()).ifPresent(rirekiDtoList -> {
+            List<SyainRireki> syainRirekiList = rirekiDtoList.stream().map(new RirekiMapper()).collect(Collectors.toList());
+            rirekiService.saveBatch(syainRirekiList);
+        });
+
+        Optional.of(updateCommand.syainKeirekiDTOList()).ifPresent(keirekiDTOList -> {
+            List<SyainKeireki> keirekiList = keirekiDTOList.stream().map(new KeirekiMapper()).collect(Collectors.toList());
+            keirekiService.saveBatch(keirekiList);
+        });
     }
 
-    public Integer save(EmployeeSaveCommand saveCommand){
-        return null;
+    public Integer save(EmployeeSaveCommand saveCommand) {
+        SyainMain syainMain = mainService.getById(saveCommand.syainMainDTO().syainId());
+        if (syainMain == null) {
+            throw new BusinessException("worker info not exist");
+        }
+        mainService.save(BeanUtil.copyProperties(saveCommand.syainMainDTO(), SyainMain.class));
+
+        Optional.of(saveCommand.syainRirekiDTOList()).ifPresent(rirekiDtoList -> {
+            List<SyainRireki> syainRirekiList = rirekiDtoList.stream().map(new RirekiMapper()).collect(Collectors.toList());
+            rirekiService.saveOrUpdateBatch(syainRirekiList);
+        });
+
+        Optional.of(saveCommand.syainKeirekiDTOList()).ifPresent(keirekiDTOList -> {
+            List<SyainKeireki> keirekiList = keirekiDTOList.stream().map(new KeirekiMapper()).collect(Collectors.toList());
+            keirekiService.saveOrUpdateBatch(keirekiList);
+        });
+        mainService.saveOrUpdate(new MainMapper().apply(saveCommand.syainMainDTO()));
+        return  saveCommand.syainMainDTO().syainId();
     }
 
-    public EmployeeDto query(Integer id){
+    public EmployeeDto query(Integer id) {
 
         SyainMain syainMain = mainService.getById(id);
         List<SyainRireki> syainRirekiList = rirekiService.queryById(id);
         List<SyainKeireki> syainKeirekiList = keirekiService.queryById(id);
 
-       return new EmployeeDto(
+        return new EmployeeDto(
                 BeanUtil.copyProperties(syainMain, SyainMainDTO.class),
                 BeanUtil.copyToList(syainRirekiList, SyainRirekiDTO.class),
                 BeanUtil.copyToList(syainKeirekiList, SyainKeirekiDTO.class)
-       );
+        );
     }
 }

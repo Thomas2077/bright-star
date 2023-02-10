@@ -1,8 +1,6 @@
 package com.bright.star.service.dto;
 
 import cn.hutool.core.util.StrUtil;
-import com.bright.star.infrastructure.persistence.entity.SyainMain;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;

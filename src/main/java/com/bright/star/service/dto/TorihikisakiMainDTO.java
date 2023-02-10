@@ -1,29 +1,16 @@
 package com.bright.star.service.dto;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
-
-import com.baomidou.mybatisplus.annotation.TableField;
-
-import java.io.Serializable;
-
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
-
 
 /**
  * <p>
- *
+ * TorihikisakiMainDTO对象
  * </p>
  *
  * @since 2023-02-08
  */
-
-
 @Schema(description = "TorihikisakiMainDTO对象")
-
 public record TorihikisakiMainDTO(
 
         /**

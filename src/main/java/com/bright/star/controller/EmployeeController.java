@@ -35,7 +35,6 @@ public class EmployeeController {
 
     /**
      * 社員管理画面検索 command
-     *
      * @param command preview
      * @return
      */
@@ -45,6 +44,11 @@ public class EmployeeController {
         return employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
     }
 
+    /**
+     * update employee
+     * @param command
+     * @return
+     */
     @Operation(summary = "update employee")
     @PostMapping("/update")
     public ResponseEntity update(@RequestBody EmployeeUpdateCommand command) {
@@ -52,6 +56,11 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    /**
+     * sava employee
+     * @param command
+     * @return
+     */
     @Operation(summary = "sava employee")
     @PostMapping("/save")
     public ResponseEntity save(@RequestBody EmployeeSaveCommand command) {
@@ -59,10 +68,8 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-
     /**
      * 個人事業主選択/社員選択
-     *
      * @param command query parameter
      * @return
      */
@@ -75,7 +82,6 @@ public class EmployeeController {
 
     /**
      * IDで社員検索
-     *
      * @param id
      * @return
      */

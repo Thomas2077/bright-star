@@ -1,9 +1,6 @@
 package com.bright.star.service.dto;
 
-import com.bright.star.controller.vo.value.BaseInfo;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
 
 import java.util.List;
 
