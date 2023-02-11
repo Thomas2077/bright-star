@@ -39,6 +39,7 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("/preview")
+    @Operation(summary = "preview employee", description = "社員をプレビューする" )
     public List<EmployeePreviewInfoVO> preview(EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
         return employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
@@ -49,8 +50,8 @@ public class EmployeeController {
      * @param command
      * @return
      */
-    @Operation(summary = "update employee")
-    @PostMapping("/update")
+    @PutMapping("/update")
+    @Operation(summary = "update employee", description = "社員を更新する" )
     public ResponseEntity update(@RequestBody EmployeeUpdateCommand command) {
         workerApplicationService.update(command);
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -61,8 +62,8 @@ public class EmployeeController {
      * @param command
      * @return
      */
-    @Operation(summary = "sava employee")
     @PostMapping("/save")
+    @Operation(summary = "save employee", description = "社員を保存する" )
     public ResponseEntity save(@RequestBody EmployeeSaveCommand command) {
         workerApplicationService.save(command);
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -74,6 +75,7 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("/selectBy")
+    @Operation(summary = "selectBy", description = "個人事業主選択/社員選択")
     public ResponseEntity<List<EmployeePreviewInfoVO>> selectEmployees(EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
         List<EmployeePreviewInfoVO> result = employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
@@ -81,12 +83,12 @@ public class EmployeeController {
     }
 
     /**
-     * IDで社員検索
+     * IDで社員を検索
      * @param id
      * @return
      */
     @GetMapping("/select/{id}")
-    @Operation(summary = "selectById", description = "selectById")
+    @Operation(summary = "selectById", description = "IDで社員を検索")
     public ResponseEntity<EmployeeDto> selectById(@PathVariable Integer id) {
         return ResponseEntity.ok(workerApplicationService.query(id));
     }
