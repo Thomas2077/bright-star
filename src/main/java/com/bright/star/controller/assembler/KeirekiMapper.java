@@ -1,6 +1,6 @@
 package com.bright.star.controller.assembler;
 
-import cn.hutool.core.bean.BeanUtil;
+import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.persistence.entity.SyainKeireki;
 import com.bright.star.service.dto.SyainKeirekiDTO;
 
@@ -15,6 +15,6 @@ import java.util.function.Function;
 public class KeirekiMapper implements Function<SyainKeirekiDTO, SyainKeireki> {
     @Override
     public SyainKeireki apply(SyainKeirekiDTO syainKeirekiDTO) {
-        return BeanUtil.copyProperties(syainKeirekiDTO, SyainKeireki.class);
+        return BeanTools.copyProperties(syainKeirekiDTO, new SyainKeireki());
     }
 }
