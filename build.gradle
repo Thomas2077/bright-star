@@ -27,7 +27,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.github.ben-manes.caffeine:caffeine'
 
-    implementation 'cn.hutool:hutool-all:5.8.11'
+    implementation 'cn.hutool:hutool-all:5.8.12'
+
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0'
 
