@@ -51,6 +51,7 @@ public class CustomerAppService {
         torihikisakiMainService.save(BeanUtil.copyProperties(command.torihikisakiMainDTO(), TorihikisakiMain.class));
         torihikisakiTantouService.saveBatch(BeanUtil.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class));
     }
+
     /**
      * 取引先情報を更新する
      * @param command
