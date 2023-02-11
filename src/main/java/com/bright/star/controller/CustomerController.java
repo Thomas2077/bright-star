@@ -1,20 +1,16 @@
 package com.bright.star.controller;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.bright.star.controller.command.CustomerQueryCommand;
 import com.bright.star.controller.command.CustomerSaveCommand;
 import com.bright.star.controller.command.CustomerUpdateCommand;
-import com.bright.star.infrastructure.persistence.entity.TorihikisakiMain;
-import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;
 import com.bright.star.service.CustomerAppService;
 import com.bright.star.service.dto.TorihikisakiMainDTO;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,26 +34,30 @@ public class CustomerController {
      * @param command
      * @return
      */
+    @GetMapping("/")
+    @Operation(summary = "queryByCondition", description = "取引先を検索する" )
     public List<TorihikisakiMainDTO> queryByCondition(@Validated CustomerQueryCommand command) {
        return customerService.queryByCondition(command);
     }
-
 
     /**
      * 取引先情報を保存する
      * @param command
      * @return
      */
-    @Transactional
+    @PostMapping("/")
+    @Operation(summary = "saveCustomer", description = "取引先を保存する" )
     public void saveCustomer(CustomerSaveCommand command) {
         customerService.saveCustomer(command);
     }
+
     /**
      * 取引先情報を更新する
      * @param command
      * @return
      */
-    @Transactional
+    @PutMapping()
+    @Operation(summary = "updateCustomer", description = "取引先を更新する" )
     public void updateCustomer(CustomerUpdateCommand command) {
         customerService.updateCustomer(command);
     }
