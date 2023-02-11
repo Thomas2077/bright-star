@@ -1,6 +1,8 @@
 package com.bright.star.service.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 /**
@@ -16,10 +18,13 @@ public record TorihikisakiMainDTO(
         /**
          * 自動連番
          */
+        @NotNull
         Integer torihikiId,
 
+        @NotNull
         String torihikiNameAll,
 
+        @NotNull
         String torihikiNameRyaku,
 
         String yuubin,
@@ -27,11 +32,13 @@ public record TorihikisakiMainDTO(
         /**
          * 住所1
          */
+        @NotNull
         String jyusyo1,
 
         /**
          * 住所2
          */
+        @NotNull
         String jyusyo2,
 
         String tel,
