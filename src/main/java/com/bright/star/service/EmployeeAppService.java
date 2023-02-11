@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class EmployeeApplicationService {
+public class EmployeeAppService {
 
     private final SyainMainService mainService;
     private final SyainRirekiService rirekiService;
@@ -67,11 +67,13 @@ public class EmployeeApplicationService {
         }
         mainService.save(BeanUtil.copyProperties(updateCommand.syainMainDTO(), SyainMain.class));
 
+        // update　履歴
         Optional.of(updateCommand.syainRirekiDTOList()).ifPresent(rirekiDtoList -> {
             List<SyainRireki> syainRirekiList = rirekiDtoList.stream().map(new RirekiMapper()).collect(Collectors.toList());
             rirekiService.saveBatch(syainRirekiList);
         });
 
+        // update 経歴
         Optional.of(updateCommand.syainKeirekiDTOList()).ifPresent(keirekiDTOList -> {
             List<SyainKeireki> keirekiList = keirekiDTOList.stream().map(new KeirekiMapper()).collect(Collectors.toList());
             keirekiService.saveBatch(keirekiList);
@@ -85,11 +87,13 @@ public class EmployeeApplicationService {
         }
         mainService.save(BeanUtil.copyProperties(saveCommand.syainMainDTO(), SyainMain.class));
 
+        // save　履歴
         Optional.of(saveCommand.syainRirekiDTOList()).ifPresent(rirekiDtoList -> {
             List<SyainRireki> syainRirekiList = rirekiDtoList.stream().map(new RirekiMapper()).collect(Collectors.toList());
             rirekiService.saveOrUpdateBatch(syainRirekiList);
         });
 
+        // save 経歴
         Optional.of(saveCommand.syainKeirekiDTOList()).ifPresent(keirekiDTOList -> {
             List<SyainKeireki> keirekiList = keirekiDTOList.stream().map(new KeirekiMapper()).collect(Collectors.toList());
             keirekiService.saveOrUpdateBatch(keirekiList);

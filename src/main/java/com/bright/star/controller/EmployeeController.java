@@ -4,7 +4,7 @@ import com.bright.star.controller.command.EmployeeQueryCommand;
 import com.bright.star.controller.command.EmployeeSaveCommand;
 import com.bright.star.controller.command.EmployeeUpdateCommand;
 import com.bright.star.controller.vo.EmployeePreviewInfoVO;
-import com.bright.star.service.EmployeeApplicationService;
+import com.bright.star.service.EmployeeAppService;
 import com.bright.star.service.dto.EmployeeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/v1/employee-manage")
 public class EmployeeController {
 
-    public final EmployeeApplicationService workerApplicationService;
+    public final EmployeeAppService workerApplicationService;
 
     /**
      * 社員管理画面検索 command
