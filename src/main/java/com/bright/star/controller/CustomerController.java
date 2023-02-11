@@ -36,7 +36,7 @@ public class CustomerController {
      */
     @GetMapping("/")
     @Operation(summary = "queryByCondition", description = "取引先を検索する" )
-    public List<TorihikisakiMainDTO> queryByCondition(@Validated CustomerQueryCommand command) {
+    public List<TorihikisakiMainDTO> queryByCondition(CustomerQueryCommand command) {
        return customerService.queryByCondition(command);
     }
 
@@ -47,7 +47,7 @@ public class CustomerController {
      */
     @PostMapping("/")
     @Operation(summary = "saveCustomer", description = "取引先を保存する" )
-    public void saveCustomer(CustomerSaveCommand command) {
+    public void saveCustomer(@RequestBody CustomerSaveCommand command) {
         customerService.saveCustomer(command);
     }
 
@@ -56,9 +56,9 @@ public class CustomerController {
      * @param command
      * @return
      */
-    @PutMapping()
+    @PutMapping("/")
     @Operation(summary = "updateCustomer", description = "取引先を更新する" )
-    public void updateCustomer(CustomerUpdateCommand command) {
+    public void updateCustomer(@RequestBody CustomerUpdateCommand command) {
         customerService.updateCustomer(command);
     }
 }

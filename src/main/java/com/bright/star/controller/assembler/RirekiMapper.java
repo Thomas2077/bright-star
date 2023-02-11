@@ -1,6 +1,6 @@
 package com.bright.star.controller.assembler;
 
-import cn.hutool.core.bean.BeanUtil;
+import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.persistence.entity.SyainRireki;
 import com.bright.star.service.dto.SyainRirekiDTO;
 
@@ -16,6 +16,6 @@ public class RirekiMapper implements Function<SyainRirekiDTO, SyainRireki>{
 
     @Override
     public SyainRireki apply(SyainRirekiDTO syainRirekiDTO) {
-        return BeanUtil.copyProperties(syainRirekiDTO, SyainRireki.class);
+        return BeanTools.copyProperties(syainRirekiDTO, new SyainRireki());
     }
 }

@@ -18,7 +18,6 @@ public record TorihikisakiMainDTO(
         /**
          * 自動連番
          */
-        @NotNull
         Integer torihikiId,
 
         @NotNull

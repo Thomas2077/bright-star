@@ -7,6 +7,7 @@ import com.bright.star.controller.assembler.RirekiMapper;
 import com.bright.star.controller.command.EmployeeQueryCommand;
 import com.bright.star.controller.command.EmployeeSaveCommand;
 import com.bright.star.controller.command.EmployeeUpdateCommand;
+import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.exception.BusinessException;
 import com.bright.star.infrastructure.persistence.entity.SyainKeireki;
 import com.bright.star.infrastructure.persistence.entity.SyainMain;
@@ -65,7 +66,7 @@ public class EmployeeAppService {
         if (syainMain == null) {
             throw new BusinessException("worker info not exist");
         }
-        mainService.save(BeanUtil.copyProperties(updateCommand.syainMainDTO(), SyainMain.class));
+        mainService.save(BeanTools.copyProperties(updateCommand.syainMainDTO(), new SyainMain()));
 
         // update　履歴
         Optional.of(updateCommand.syainRirekiDTOList()).ifPresent(rirekiDtoList -> {

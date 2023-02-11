@@ -1,9 +1,9 @@
 package com.bright.star.service;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.bright.star.controller.command.CustomerQueryCommand;
 import com.bright.star.controller.command.CustomerSaveCommand;
 import com.bright.star.controller.command.CustomerUpdateCommand;
+import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiMain;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;
 import com.bright.star.service.app.TorihikisakiMainService;
@@ -38,7 +38,7 @@ public class CustomerAppService {
      */
     public List<TorihikisakiMainDTO> queryByCondition(CustomerQueryCommand command) {
         List<TorihikisakiMain> torihikisakiMainList = torihikisakiMainService.queryByCondition(command);
-        return BeanUtil.copyToList(torihikisakiMainList, TorihikisakiMainDTO.class);
+        return BeanTools.copyToList(torihikisakiMainList, TorihikisakiMainDTO.class);
     }
 
     /**
@@ -48,8 +48,12 @@ public class CustomerAppService {
      */
     @Transactional
     public void saveCustomer(CustomerSaveCommand command) {
-        torihikisakiMainService.save(BeanUtil.copyProperties(command.torihikisakiMainDTO(), TorihikisakiMain.class));
-        torihikisakiTantouService.saveBatch(BeanUtil.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class));
+
+        TorihikisakiMain torihikisakiMain = BeanTools.copyProperties(command.torihikisakiMainDTO(), new TorihikisakiMain());
+        torihikisakiMainService.save(torihikisakiMain);
+
+        List<TorihikisakiTantou> torihikisakiTantouList = BeanTools.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class);
+        torihikisakiTantouService.saveBatch(torihikisakiTantouList);
     }
 
     /**
@@ -59,7 +63,7 @@ public class CustomerAppService {
      */
     @Transactional
     public void updateCustomer(CustomerUpdateCommand command) {
-        torihikisakiMainService.save(BeanUtil.copyProperties(command.torihikisakiMainDTO(), TorihikisakiMain.class));
-        torihikisakiTantouService.saveBatch(BeanUtil.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class));
+        torihikisakiMainService.updateById(BeanTools.copyProperties(command.torihikisakiMainDTO(),  new TorihikisakiMain()));
+        torihikisakiTantouService.updateBatchById(BeanTools.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class));
     }
 }

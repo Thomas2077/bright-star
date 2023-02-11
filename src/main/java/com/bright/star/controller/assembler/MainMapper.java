@@ -1,6 +1,6 @@
 package com.bright.star.controller.assembler;
 
-import cn.hutool.core.bean.BeanUtil;
+import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.persistence.entity.SyainMain;
 import com.bright.star.service.dto.SyainMainDTO;
 
@@ -15,6 +15,6 @@ import java.util.function.Function;
 public class MainMapper implements Function<SyainMainDTO, SyainMain>{
     @Override
     public SyainMain apply(SyainMainDTO syainMainDTO) {
-        return BeanUtil.copyProperties(syainMainDTO, SyainMain.class);
+        return BeanTools.copyProperties(syainMainDTO, new SyainMain());
     }
 }
