@@ -7,11 +7,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  * <p>
@@ -64,5 +67,4 @@ class UserAuth extends Model<UserAuth> {
     public Serializable pkVal() {
         return this.userId;
     }
-
 }
