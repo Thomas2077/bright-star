@@ -24,7 +24,15 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'dev.aspectj:aspectj-maven-plugin:1.13.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-jwt:1.0.10.RELEASE'
+    implementation 'org.springframework.security.oauth:spring-security-oauth:2.3.5.RELEASE'
+    compileOnly 'org.aspectj:aspectjweaver:1.9.19'
+    compileOnly 'org.aspectj:aspectjrt:1.9.19'
+
     implementation 'com.github.ben-manes.caffeine:caffeine'
 
     implementation 'cn.hutool:hutool-all:5.8.12'
