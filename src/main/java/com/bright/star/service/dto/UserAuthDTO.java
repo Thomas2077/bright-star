@@ -1,6 +1,7 @@
 package com.bright.star.service.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 
 /**
@@ -10,28 +11,28 @@ import io.swagger.v3.oas.annotations.media.Schema;
  *
  * @since 2023-02-08
  */
+@Data
 @Schema(description = "UserAuthDTO对象")
-public record UserAuthDTO(
+public class UserAuthDTO{
 
-        Integer userId,
+        Integer userId;
 
-        String userCode,
+        String userCode;
 
-        String userName,
+        String userName;
 
         /**
          * 暗号化すべき、MD5関数で実施可能。
          */
-        String password,
+        String password;
 
         /**
          * S:システム管理者 A:統合管理者　B　営業担当　C経理担当　D：人事担当
          */
-        String userRole,
+        String userRole;
 
         /**
          * 有効・無効
          */
-        Integer isYoukou
-) {
+        Integer isYoukou;
 }

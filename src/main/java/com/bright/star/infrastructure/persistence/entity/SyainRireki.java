@@ -30,8 +30,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("syain_rireki")
 @Schema(description = "SyainRireki对象")
-public
-class SyainRireki extends Model<SyainRireki> {
+public class SyainRireki extends Model<SyainRireki> {
 
     private static final long serialVersionUID = 1L;
 

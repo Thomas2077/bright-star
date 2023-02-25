@@ -8,12 +8,13 @@ import com.bright.star.service.EmployeeAppService;
 import com.bright.star.service.dto.EmployeeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class EmployeeController {
      */
     @GetMapping("/preview")
     @Operation(summary = "preview employee", description = "社員をプレビューする" )
-    public List<EmployeePreviewInfoVO> preview(EmployeeQueryCommand command) {
+    public List<EmployeePreviewInfoVO> preview(@Valid @Validated EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
         return employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
     }
