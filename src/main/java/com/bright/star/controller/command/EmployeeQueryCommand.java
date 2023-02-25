@@ -1,8 +1,7 @@
 package com.bright.star.controller.command;
-import io.swagger.v3.oas.annotations.Parameter;
+
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.SchemaProperties;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 
 
 /**
@@ -23,6 +22,7 @@ public record EmployeeQueryCommand(
         Integer jobCategoryId,
 
         @Schema(description = "在職/非在職")
+        @NotNull
         Boolean onDuty,
 
         @Schema(description = "在職/非在職")

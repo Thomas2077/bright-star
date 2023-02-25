@@ -1,6 +1,8 @@
 package com.bright.star.service.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 
@@ -11,21 +13,21 @@ import java.time.LocalDateTime;
  *
  * @since 2023-02-08
  */
+@Data
 @Schema(description = "UserAccessLogDTO对象")
-public record UserAccessLogDTO(
+public class UserAccessLogDTO{
 
-        Integer id,
+        Integer id;
 
         /**
          * 画面ID
          */
-        Integer userId,
+        Integer userId;
 
         /**
          * アクセス開始時間
          */
-        String gamenId,
+        String gamenId;
 
-        LocalDateTime startTime
-) {
+        LocalDateTime startTime;
 }

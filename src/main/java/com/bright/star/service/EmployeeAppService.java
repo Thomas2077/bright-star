@@ -17,6 +17,7 @@ import com.bright.star.service.app.SyainMainService;
 import com.bright.star.service.app.SyainRirekiService;
 import com.bright.star.service.app.TgSettingService;
 import com.bright.star.service.dto.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class EmployeeAppService {
     private final SyainKeirekiService keirekiService;
     private final TgSettingService settingService;
 
-    public List<EmployeePreviewInfoDto> previewEmployees(EmployeeQueryCommand command) {
+    public List<EmployeePreviewInfoDto> previewEmployees(@Valid EmployeeQueryCommand command) {
 
         List<SyainMainDTO> syainMainDTOList = mainService.queryPreview(command);
 
@@ -50,19 +51,19 @@ public class EmployeeAppService {
             EmployeePreviewInfoDto previewInfoDto = EmployeePreviewInfoDto.build(syainMainDTO);
 
             // setting company name
-            TgSettingDTO companySetting = settingService.findByTypes(1, syainMainDTO.syozokuKaisya(), 1);
-            previewInfoDto.setCompanyName(companySetting.value1());
+            TgSettingDTO companySetting = settingService.findByTypes(1, syainMainDTO.getSyozokuKaisya(), 1);
+            previewInfoDto.setCompanyName(companySetting.getValue1());
 
             // setting job category
-            TgSettingDTO jobSetting = settingService.findByTypes(3, 4, syainMainDTO.syokugyoKind());
-            previewInfoDto.setJobCategory(jobSetting.value1());
+            TgSettingDTO jobSetting = settingService.findByTypes(3, 4, syainMainDTO.getSyokugyoKind());
+            previewInfoDto.setJobCategory(jobSetting.getValue1());
             return previewInfoDto;
         }).collect(Collectors.toList());
     }
 
     @Transactional
     public void update(EmployeeUpdateCommand updateCommand) {
-        SyainMain syainMain = mainService.getById(updateCommand.syainMainDTO().syainId());
+        SyainMain syainMain = mainService.getById(updateCommand.syainMainDTO().getSyainId());
         if (syainMain == null) {
             throw new BusinessException("worker info not exist");
         }
@@ -82,7 +83,7 @@ public class EmployeeAppService {
     }
 
     public Integer save(EmployeeSaveCommand saveCommand) {
-        SyainMain syainMain = mainService.getById(saveCommand.syainMainDTO().syainId());
+        SyainMain syainMain = mainService.getById(saveCommand.syainMainDTO().getSyainId());
         if (syainMain == null) {
             throw new BusinessException("worker info not exist");
         }
@@ -100,7 +101,7 @@ public class EmployeeAppService {
             keirekiService.saveOrUpdateBatch(keirekiList);
         });
         mainService.saveOrUpdate(new MainMapper().apply(saveCommand.syainMainDTO()));
-        return  saveCommand.syainMainDTO().syainId();
+        return saveCommand.syainMainDTO().getSyainId();
     }
 
     public EmployeeDto query(Integer id) {

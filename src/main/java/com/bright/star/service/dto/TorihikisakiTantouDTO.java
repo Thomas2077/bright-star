@@ -1,6 +1,7 @@
 package com.bright.star.service.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 
 /**
@@ -10,42 +11,42 @@ import io.swagger.v3.oas.annotations.media.Schema;
  *
  * @since 2023-02-08
  */
+@Data
 @Schema(description = "TorihikisakiTantouDTO对象")
-public record TorihikisakiTantouDTO(
+public class TorihikisakiTantouDTO{
 
         /**
          * 担当者ID
          */
-        Integer tantouId,
+        Integer tantouId;
 
         /**
          * 担当者ID
          */
-        Integer torihikiId,
+        Integer torihikiId;
 
-        String firstName,
+        String firstName;
 
-        String lastName,
+        String lastName;
 
         /**
          * 所属: 管理本部など
          */
-        String syozoku,
+        String syozoku;
 
         /**
          * 役職: 部長など
          */
-        String yakusyoku,
+        String yakusyoku;
 
-        String mail,
+        String mail;
 
-        String tel,
+        String tel;
 
         /**
          * 事務関連（請求・外注など）MAIL: 1:TO 2:CC
          */
-        Integer jimuMail,
+        Integer jimuMail;
 
-        String bikou
-) {
+        String bikou;
 }

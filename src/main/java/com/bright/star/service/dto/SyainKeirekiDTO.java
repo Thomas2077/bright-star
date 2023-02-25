@@ -1,6 +1,7 @@
 package com.bright.star.service.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,93 +14,90 @@ import java.time.LocalDateTime;
  *
  * @since 2023-02-08
  */
+@Data
 @Schema(description = "SyainKeirekiDTO对象")
-
-public
-record SyainKeirekiDTO(
-
-        Integer syainId,
+public class SyainKeirekiDTO{
+        Integer syainId;
 
         /**
          * 開始日
          */
-        LocalDate kaisibi,
+        LocalDate kaisibi;
 
         /**
          * 終了日
          */
-        LocalDate syuryobi,
+        LocalDate syuryobi;
 
         /**
          * プロジェクト名
          */
-        String pjName,
+        String pjName;
 
         /**
          * 対日かどうか
          */
-        Integer tainitiFlag,
+        Integer tainitiFlag;
 
         /**
          * 開発場所
          */
-        Integer basyo,
+        Integer basyo;
 
         /**
          * 開発規模
          */
-        Integer kibo,
+        Integer kibo;
 
         /**
          * 開発業種
          */
-        Integer gyosyu,
+        Integer gyosyu;
 
         /**
          * 開発環境
          */
-        Integer kaihatukankyo,
+        Integer kaihatukankyo;
 
         /**
          * 運用環境
          */
-        Integer unyoukankyo,
+        Integer unyoukankyo;
 
         /**
          * 言語
          */
-        String gengo,
+        String gengo;
 
-        String db,
+        String db;
 
         /**
          * FW・IDE・ツール
          */
-        String tool,
+        String tool;
 
         /**
          * 担当
          */
-        Integer tantou,
+        Integer tantou;
 
         /**
          * 作業範囲
          */
-        Integer sagyohani,
+        Integer sagyohani;
 
         /**
          * 開発概要
          */
-        String gaiyou,
+        String gaiyou;
 
         /**
          * 登録日
          */
-        LocalDateTime tourokubi,
+        LocalDateTime tourokubi;
 
         /**
          * 更新日
          */
-        LocalDateTime kousinnbi
-) {
+        LocalDateTime kousinnbi;
 }
