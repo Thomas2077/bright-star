@@ -23,9 +23,8 @@ public record EmployeeQueryCommand(
 
         @Schema(description = "在職/非在職")
         @NotNull
-        Boolean onDuty,
+        Boolean onDuty
 
-        @Schema(description = "在職/非在職")
-        Integer syainId
+
 ){
 }

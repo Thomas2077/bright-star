@@ -1,10 +1,13 @@
 package com.bright.star.controller;
 
+import com.bright.star.controller.command.SettingQueryParam;
 import com.bright.star.service.app.TgSettingService;
 import com.bright.star.service.dto.TgSettingDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +31,10 @@ public class SettingController {
     private final TgSettingService tgSettingService;
 
 
-    @GetMapping("/companyName")
-    public List<TgSettingDTO> queryCompanyName(){
-        List<TgSettingDTO> tgSettingDTOS = tgSettingService.listByTypes(1, null, null);
-        return tgSettingDTOS.stream().filter(tgSettingDTO -> tgSettingDTO.getCategory3() == 1).collect(Collectors.toList());
+    @GetMapping("")
+    public ResponseEntity<List<TgSettingDTO>> query(@Valid SettingQueryParam param){
+        return ResponseEntity.ok(tgSettingService.listByTypes(param.category1(), param.category2(), param.category3()));
     }
+
+
 }
