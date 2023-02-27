@@ -16,8 +16,8 @@ import java.util.List;
  **/
 @Schema(description = "社員更新 command")
 public record EmployeeUpdateCommand (
-        @NotNull
-        @Schema(description = "syainMain object ") SyainMainDTO syainMainDTO,
+
+        @NotNull @Schema(description = "syainMain object ") SyainMainDTO syainMainDTO,
         @Schema(description = "rireki ") List<SyainRirekiDTO> syainRirekiDTOList,
         @Schema(description = "Keireki") List<SyainKeirekiDTO> syainKeirekiDTOList
 ){
