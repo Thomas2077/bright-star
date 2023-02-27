@@ -14,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,23 +36,30 @@ public class EmployeeController {
 
     /**
      * 社員管理画面検索 command
+     *
      * @param command preview
      * @return
      */
-    @GetMapping("/preview")
-    @Operation(summary = "preview employee", description = "社員をプレビューする" )
-    public List<EmployeePreviewInfoVO> preview(@Valid @Validated EmployeeQueryCommand command) {
+    @PostMapping ("/preview")
+    @Operation(summary = "preview employee", description = "社員をプレビューする")
+    public ResponseEntity<List<EmployeePreviewInfoVO>> preview(@Valid @RequestBody EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
-        return employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
+        System.out.println(command);
+        return ResponseEntity.ok(
+                employeePreviewInfoDtoList.stream()
+                        .map(EmployeePreviewInfoVO::build)
+                        .collect(Collectors.toList())
+        );
     }
 
     /**
      * update employee
+     *
      * @param command
      * @return
      */
     @PutMapping("/update")
-    @Operation(summary = "update employee", description = "社員を更新する" )
+    @Operation(summary = "update employee", description = "社員を更新する")
     public ResponseEntity update(@RequestBody EmployeeUpdateCommand command) {
         workerApplicationService.update(command);
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -61,11 +67,12 @@ public class EmployeeController {
 
     /**
      * sava employee
+     *
      * @param command
      * @return
      */
     @PostMapping("/save")
-    @Operation(summary = "save employee", description = "社員を保存する" )
+    @Operation(summary = "save employee", description = "社員を保存する")
     public ResponseEntity save(@RequestBody EmployeeSaveCommand command) {
         workerApplicationService.save(command);
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -73,6 +80,7 @@ public class EmployeeController {
 
     /**
      * 個人事業主選択/社員選択
+     *
      * @param command query parameter
      * @return
      */
@@ -86,6 +94,7 @@ public class EmployeeController {
 
     /**
      * IDで社員を検索
+     *
      * @param id
      * @return
      */

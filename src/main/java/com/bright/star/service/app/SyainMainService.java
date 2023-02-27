@@ -28,7 +28,7 @@ public class SyainMainService extends  ServiceImpl<SyainMainDao, SyainMain> {
         if(command.companyId() != null){
             previewQuery.eq("SYOZOKU_KAISYA", command.companyId());
         }
-        if(StrUtil.isNotEmpty(command.workerName())){
+        if(StrUtil.isNotBlank(command.workerName())){
             previewQuery.eq("CONCAT(FIRST_NAME_KANJI, LAST_NAME_KANJI)", command.workerName());
         }
         if(command.jobCategoryId() != null){
