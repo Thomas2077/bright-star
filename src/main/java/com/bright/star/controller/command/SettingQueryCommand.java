@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
  * @description
  **/
 @Schema(description = "setting 検索 command")
-public record SettingQueryParam(
+public record SettingQueryCommand(
 
         @NotNull
         Integer category1,

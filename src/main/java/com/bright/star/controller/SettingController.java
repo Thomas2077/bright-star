@@ -1,6 +1,6 @@
 package com.bright.star.controller;
 
-import com.bright.star.controller.command.SettingQueryParam;
+import com.bright.star.controller.command.SettingQueryCommand;
 import com.bright.star.service.app.TgSettingService;
 import com.bright.star.service.dto.TgSettingDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author yanzou
@@ -32,7 +31,7 @@ public class SettingController {
 
 
     @GetMapping("")
-    public ResponseEntity<List<TgSettingDTO>> query(@Valid SettingQueryParam param){
+    public ResponseEntity<List<TgSettingDTO>> query(@Valid SettingQueryCommand param){
         return ResponseEntity.ok(tgSettingService.listByTypes(param.category1(), param.category2(), param.category3()));
     }
 
