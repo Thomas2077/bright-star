@@ -40,11 +40,10 @@ public class EmployeeController {
      * @param command preview
      * @return
      */
-    @PostMapping ("/preview")
+    @GetMapping ("/preview")
     @Operation(summary = "preview employee", description = "社員をプレビューする")
-    public ResponseEntity<List<EmployeePreviewInfoVO>> preview(@Valid @RequestBody EmployeeQueryCommand command) {
+    public ResponseEntity<List<EmployeePreviewInfoVO>> preview(@Valid EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
-        System.out.println(command);
         return ResponseEntity.ok(
                 employeePreviewInfoDtoList.stream()
                         .map(EmployeePreviewInfoVO::build)
@@ -60,7 +59,7 @@ public class EmployeeController {
      */
     @PutMapping("/update")
     @Operation(summary = "update employee", description = "社員を更新する")
-    public ResponseEntity update(@RequestBody EmployeeUpdateCommand command) {
+    public ResponseEntity update(EmployeeUpdateCommand command) {
         workerApplicationService.update(command);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

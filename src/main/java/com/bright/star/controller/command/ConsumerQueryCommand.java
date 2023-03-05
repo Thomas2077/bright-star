@@ -1,7 +1,6 @@
 package com.bright.star.controller.command;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.Valid;
 
 /**
  * @author yanzou
@@ -10,12 +9,12 @@ import jakarta.validation.Valid;
  * @description
  **/
 @Schema(description = "取引先画面検索 command")
-public record CustomerQueryCommand(
+public record ConsumerQueryCommand(
 
-        @Schema(description = "取引先名", example = "customerName")
+        @Schema(description = "取引先名", example = "consumerName")
         String customerName,
 
-        @Schema(description = "取引元名", example = "customerAddress")
+        @Schema(description = "取引元名", example = "consumerAddress")
         String customerAddress
 
 ) {
