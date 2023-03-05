@@ -1,20 +1,24 @@
 package com.bright.star.service;
 
-import com.bright.star.controller.command.CustomerQueryCommand;
+import cn.hutool.core.bean.BeanUtil;
+import com.bright.star.controller.command.ConsumerQueryCommand;
 import com.bright.star.controller.command.CustomerSaveCommand;
 import com.bright.star.controller.command.CustomerUpdateCommand;
+import com.bright.star.controller.vo.ConsumerWithWorkerVO;
 import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiMain;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;
 import com.bright.star.service.app.TorihikisakiMainService;
 import com.bright.star.service.app.TorihikisakiTantouService;
 import com.bright.star.service.dto.TorihikisakiMainDTO;
+import com.bright.star.service.dto.TorihikisakiTantouDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 取引先情報を管理する画面
@@ -36,9 +40,14 @@ public class CustomerAppService {
      * @param command
      * @return
      */
-    public List<TorihikisakiMainDTO> queryByCondition(CustomerQueryCommand command) {
+    public List<ConsumerWithWorkerVO> queryByCondition(ConsumerQueryCommand command) {
         List<TorihikisakiMain> torihikisakiMainList = torihikisakiMainService.queryByCondition(command);
-        return BeanTools.copyToList(torihikisakiMainList, TorihikisakiMainDTO.class);
+
+        return torihikisakiMainList.stream().map(torihikisaki -> {
+            TorihikisakiMainDTO torihikisakiMainDTO = BeanUtil.copyProperties(torihikisaki, TorihikisakiMainDTO.class);
+            TorihikisakiTantouDTO torihikisakiTantouDTO = BeanUtil.copyProperties(torihikisakiTantouService.getByTorihikisaki(torihikisaki.getTorihikiId()), TorihikisakiTantouDTO.class);
+            return new ConsumerWithWorkerVO(torihikisakiMainDTO, torihikisakiTantouDTO);
+        }).collect(Collectors.toList());
     }
 
     /**

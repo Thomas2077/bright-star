@@ -35,6 +35,7 @@ public class SettingController {
     @GetMapping("")
     @AccessLog(role = Role.USER, pageId = "12121")
     public ResponseEntity<List<TgSettingDTO>> query(@Valid SettingQueryCommand param){
+
         return ResponseEntity.ok(tgSettingService.listByTypes(param.category1(), param.category2(), param.category3()));
     }
 
