@@ -1,7 +1,5 @@
 package com.bright.star;
 
-import cn.hutool.core.bean.BeanUtil;
-import com.bright.star.controller.command.CustomerQueryCommand;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -10,10 +8,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.util.ReflectionUtils;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 
 @SpringBootApplication
 @MapperScan("com.bright.star.infrastructure.persistence.dao")

@@ -21,7 +21,7 @@ public class TorihikisakiTantouDTO{
         Integer tantouId;
 
         /**
-         * 担当者ID
+         * ID
          */
         Integer torihikiId;
 

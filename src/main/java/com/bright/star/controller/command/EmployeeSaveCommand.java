@@ -20,9 +20,5 @@ public record EmployeeSaveCommand (
         @Schema(description = "syainMain object ") SyainMainDTO syainMainDTO,
         @Schema(description = "rireki ") List<SyainRirekiDTO> syainRirekiDTOList,
         @Schema(description = "Keireki") List<SyainKeirekiDTO> syainKeirekiDTOList,
-        @Schema(description = "き") List<SyainKyuyoDTO> syainKyuyoDTOList
-
-){
-
-
-}
+        @Schema(description = "给与") List<SyainKyuyoDTO> syainKyuyoDTOList
+){}

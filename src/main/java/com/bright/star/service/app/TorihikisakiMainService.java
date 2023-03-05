@@ -2,7 +2,7 @@ package com.bright.star.service.app;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.bright.star.controller.command.CustomerQueryCommand;
+import com.bright.star.controller.command.ConsumerQueryCommand;
 import org.springframework.stereotype.Service;
 import com.bright.star.infrastructure.persistence.entity.TorihikisakiMain;
 import com.bright.star.infrastructure.persistence.dao.TorihikisakiMainDao;
@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class TorihikisakiMainService extends  ServiceImpl<TorihikisakiMainDao, TorihikisakiMain> {
 
-    public List<TorihikisakiMain> queryByCondition(CustomerQueryCommand command) {
+    public List<TorihikisakiMain> queryByCondition(ConsumerQueryCommand command) {
         LambdaQueryWrapper<TorihikisakiMain> query = new LambdaQueryWrapper();
         // TODO change the 取引元名
         query.like(StrUtil.isNotEmpty(command.customerName()), TorihikisakiMain::getTorihikiNameAll, command.customerName());
