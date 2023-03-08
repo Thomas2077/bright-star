@@ -1,18 +1,9 @@
 package com.bright.star.service.dto;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.time.LocalDateTime;
-
-import com.baomidou.mybatisplus.annotation.TableField;
-
-import java.io.Serializable;
-
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
@@ -22,25 +13,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
  *
  * @since 2023-02-08
  */
-
-
+@Data
 @Schema(description = "UserAccessLogDTO对象")
+public class UserAccessLogDTO{
 
-public
-record UserAccessLogDTO(
-
-        Integer id,
+        Integer id;
 
         /**
          * 画面ID
          */
-        Integer userId,
+        Integer userId;
 
         /**
          * アクセス開始時間
          */
-        String gamenId,
+        String gamenId;
 
-        LocalDateTime startTime
-) {
+        LocalDateTime startTime;
 }

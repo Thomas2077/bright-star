@@ -1,156 +1,149 @@
 package com.bright.star.service.dto;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-
-import java.io.Serializable;
-
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
 /**
  * <p>
- *
+ * TorihikisakiMainDTO对象
  * </p>
  *
  * @since 2023-02-08
  */
-
-
+@Data
 @Schema(description = "TorihikisakiMainDTO对象")
-
-public
-record TorihikisakiMainDTO(
+public class TorihikisakiMainDTO{
 
         /**
          * 自動連番
          */
-        Integer torihikiId,
+        Integer torihikiId;
 
-        String torihikiNameAll,
+        @NotNull
+        String torihikiNameAll;
 
-        String torihikiNameRyaku,
+        @NotNull
+        String torihikiNameRyaku;
 
-        String yuubin,
+        String yuubin;
 
         /**
          * 住所1
          */
-        String jyusyo1,
+        @NotNull
+        String jyusyo1;
 
         /**
          * 住所2
          */
-        String jyusyo2,
+        @NotNull
+        String jyusyo2;
 
-        String tel,
+        String tel;
 
-        String fax,
+        String fax;
 
-        String url,
+        String url;
 
         /**
          * 備考
          */
-        String bikou,
+        String bikou;
 
         /**
          * 論理削除　0:有効　1:削除
          */
-        Integer deleteFlag,
+        Integer deleteFlag;
 
         /**
          * 請求書の郵送有無　0：無し　1：有り
          */
-        Integer seikyusyoKubun1,
+        Integer seikyusyoKubun1;
 
         /**
          * 特定ファイル名　0：無し　1：有り
          */
-        Integer seikyusyoKubun2,
+        Integer seikyusyoKubun2;
 
         /**
          * 案件名請求　0：無し　1：有り
          */
-        Integer seikyusyoKubun3,
+        Integer seikyusyoKubun3;
 
         /**
          * 納品書付き　0：無し　1：有り
          */
-        Integer seikyusyoKubun4,
+        Integer seikyusyoKubun4;
 
         /**
          * 請求書の提供　0：無し　1：本体　2：フォーマット
          */
-        Integer seikyusyoKubun5,
+        Integer seikyusyoKubun5;
 
         /**
          * 請求単位　0：会社別　1：作業員別／案件名別　2：現場別　3：職部別
          */
-        Integer seikyusyoKubun6,
+        Integer seikyusyoKubun6;
 
-        String seikyusyoKubun7,
+        String seikyusyoKubun7;
 
-        String seikyusyoKubun8,
+        String seikyusyoKubun8;
 
-        String seikyusyoKubun9,
+        String seikyusyoKubun9;
 
-        String seikyusyoKubun10,
+        String seikyusyoKubun10;
 
-        String seikyusyoKubun11,
+        String seikyusyoKubun11;
 
         /**
          * 本社指定
          */
-        Integer honsya,
+        Integer honsya;
 
         /**
          * 本社口座
          */
-        Integer honsyaKouza,
+        Integer honsyaKouza;
 
         /**
          * 金融機関コード
          */
-        String kinyukikanCode,
+        String kinyukikanCode;
 
         /**
          * 金融機関
          */
-        String kinyukikanName,
+        String kinyukikanName;
 
         /**
          * 支店名コード
          */
-        String sitenCode,
+        String sitenCode;
 
         /**
          * 支店
          */
-        String sitenName,
+        String sitenName;
 
         /**
          * 1:普通　2:当座
          */
-        Integer kouzaKind,
+        Integer kouzaKind;
 
         /**
          * 口座番号
          */
-        String kouzaNum,
+        String kouzaNum;
 
         /**
          * 名義人
          */
-        String meigiName,
+        String meigiName;
 
-        LocalDateTime tourokubi,
+        LocalDateTime tourokubi;
 
-        LocalDateTime kousinnbi
-) {
+        LocalDateTime kousinnbi;
 }

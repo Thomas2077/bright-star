@@ -1,9 +1,6 @@
 package com.bright.star.service.dto;
 
-import com.bright.star.controller.vo.value.BaseInfo;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
 
 import java.util.List;
 
@@ -14,8 +11,7 @@ import java.util.List;
  * @description社員_info_dto
  **/
 @Schema(description = "worker dto object")
-public
-record EmployeeDto(
+public record EmployeeDto(
         SyainMainDTO syainMainDTO,
         List<SyainRirekiDTO> syainRirekiDTOList,
         List<SyainKeirekiDTO> businessExperienceDTOList

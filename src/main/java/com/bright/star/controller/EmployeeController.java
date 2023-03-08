@@ -4,10 +4,11 @@ import com.bright.star.controller.command.EmployeeQueryCommand;
 import com.bright.star.controller.command.EmployeeSaveCommand;
 import com.bright.star.controller.command.EmployeeUpdateCommand;
 import com.bright.star.controller.vo.EmployeePreviewInfoVO;
-import com.bright.star.service.EmployeeApplicationService;
+import com.bright.star.service.EmployeeAppService;
 import com.bright.star.service.dto.EmployeeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -25,14 +26,13 @@ import java.util.stream.Collectors;
  * @description
  **/
 @Slf4j
-//@Api(tags = "社员")
-@Tag(name = "社员 contoller")
+@Tag(name = "社员")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/employee-manage")
 public class EmployeeController {
 
-    public final EmployeeApplicationService workerApplicationService;
+    public final EmployeeAppService workerApplicationService;
 
     /**
      * 社員管理画面検索 command
@@ -40,26 +40,42 @@ public class EmployeeController {
      * @param command preview
      * @return
      */
-    @GetMapping("/preview")
-    public List<EmployeePreviewInfoVO> preview(EmployeeQueryCommand command) {
+    @GetMapping ("/preview")
+    @Operation(summary = "preview employee", description = "社員をプレビューする")
+    public ResponseEntity<List<EmployeePreviewInfoVO>> preview(@Valid EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
-        return employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
+        return ResponseEntity.ok(
+                employeePreviewInfoDtoList.stream()
+                        .map(EmployeePreviewInfoVO::build)
+                        .collect(Collectors.toList())
+        );
     }
 
-    @Operation(summary = "update employee")
-    @PostMapping("/update")
-    public ResponseEntity update(@RequestBody EmployeeUpdateCommand command) {
+    /**
+     * update employee
+     *
+     * @param command
+     * @return
+     */
+    @PutMapping("/update")
+    @Operation(summary = "update employee", description = "社員を更新する")
+    public ResponseEntity update(EmployeeUpdateCommand command) {
         workerApplicationService.update(command);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @Operation(summary = "sava employee")
+    /**
+     * sava employee
+     *
+     * @param command
+     * @return
+     */
     @PostMapping("/save")
+    @Operation(summary = "save employee", description = "社員を保存する")
     public ResponseEntity save(@RequestBody EmployeeSaveCommand command) {
         workerApplicationService.save(command);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-
 
     /**
      * 個人事業主選択/社員選択
@@ -68,6 +84,7 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("/selectBy")
+    @Operation(summary = "selectBy", description = "個人事業主選択/社員選択")
     public ResponseEntity<List<EmployeePreviewInfoVO>> selectEmployees(EmployeeQueryCommand command) {
         val employeePreviewInfoDtoList = workerApplicationService.previewEmployees(command);
         List<EmployeePreviewInfoVO> result = employeePreviewInfoDtoList.stream().map(EmployeePreviewInfoVO::build).collect(Collectors.toList());
@@ -75,13 +92,13 @@ public class EmployeeController {
     }
 
     /**
-     * ID拆、で社員検索
+     * IDで社員を検索
      *
      * @param id
      * @return
      */
     @GetMapping("/select/{id}")
-    @Operation(summary = "selectById", description = "selectById")
+    @Operation(summary = "selectById", description = "IDで社員を検索")
     public ResponseEntity<EmployeeDto> selectById(@PathVariable Integer id) {
         return ResponseEntity.ok(workerApplicationService.query(id));
     }

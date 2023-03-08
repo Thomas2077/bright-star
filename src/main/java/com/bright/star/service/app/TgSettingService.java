@@ -1,13 +1,11 @@
-package com.bright.star.service.tmp;
+package com.bright.star.service.app;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.collection.ListUtil;
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.bright.star.infrastructure.common.BeanTools;
 import com.bright.star.infrastructure.exception.BusinessException;
 import com.bright.star.service.dto.TgSettingDTO;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import com.bright.star.infrastructure.persistence.entity.TgSetting;
@@ -30,17 +28,17 @@ public class TgSettingService extends  ServiceImpl<TgSettingDao, TgSetting> {
     private static final int ONE = 0;
 
     public List<TgSettingDTO> listByTypes(Integer cateA, Integer cateB, Integer cateC ){
-        List<TgSetting> tgSettingList = querySetting(cateA, cateB, cateC);
-        return BeanUtil.copyToList(tgSettingList, TgSettingDTO.class);
+        List<TgSetting> tgSettingList = querySetting(cateA, cateB, cateC);;
+        return BeanTools.copyToList(tgSettingList, TgSettingDTO.class);
     }
 
-    public TgSettingDTO findByTypes(Integer cateA, @NotNull Integer cateB, @NotNull Integer cateC ){
+    public TgSettingDTO findByTypes(Integer cateA, Integer cateB, Integer cateC ){
         List<TgSetting> tgSettingList = querySetting(cateA, cateB, cateC);
         if(CollectionUtil.isEmpty(tgSettingList)){
             log.error("{}, {}, {} setting is not exist", cateA, cateB, cateC);
             throw new BusinessException(" setting record null exception");
         }
-        return BeanUtil.copyProperties(tgSettingList.get(ONE), TgSettingDTO.class);
+        return BeanTools.copyProperties(tgSettingList.get(ONE), TgSettingDTO.class);
     }
 
     private List<TgSetting> querySetting(Integer cateA, Integer cateB, Integer cateC ){

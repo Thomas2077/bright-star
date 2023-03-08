@@ -1,4 +1,4 @@
-package com.bright.star.service.tmp;
+package com.bright.star.service.app;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.stereotype.Service;

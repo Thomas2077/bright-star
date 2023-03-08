@@ -1,15 +1,7 @@
 package com.bright.star.service.dto;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
-
-import java.io.Serializable;
-
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 
 /**
@@ -19,27 +11,23 @@ import io.swagger.v3.oas.annotations.media.Schema;
  *
  * @since 2023-02-08
  */
-
-
+@Data
 @Schema(description = "TgSettingDTO对象")
+public class TgSettingDTO{
 
-public
-record TgSettingDTO(
+        Integer category1;
 
-        Integer category1,
+        Integer category2;
 
-        Integer category2,
+        Integer category3;
 
-        Integer category3,
+        String value1;
 
-        String value1,
+        String value2;
 
-        String value2,
+        String value3;
 
-        String value3,
+        String value4;
 
-        String value4,
-
-        String value5
-) {
-}
+        String value5;
+                }

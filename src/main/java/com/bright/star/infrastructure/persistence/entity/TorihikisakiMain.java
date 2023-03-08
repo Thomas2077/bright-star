@@ -1,5 +1,6 @@
 package com.bright.star.infrastructure.persistence.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
@@ -34,7 +35,7 @@ class TorihikisakiMain extends Model<TorihikisakiMain> {
      * 自動連番
      */
     @Schema(description = "自動連番")
-    @TableField("TORIHIKI_ID")
+    @TableId("TORIHIKI_ID")
     private Integer torihikiId;
 
     @TableField("TORIHIKI_NAME_ALL")

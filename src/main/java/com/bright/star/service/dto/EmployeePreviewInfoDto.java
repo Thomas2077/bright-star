@@ -1,8 +1,6 @@
 package com.bright.star.service.dto;
 
 import cn.hutool.core.util.StrUtil;
-import com.bright.star.infrastructure.persistence.entity.SyainMain;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
@@ -49,12 +47,12 @@ class EmployeePreviewInfoDto {
 
     public static EmployeePreviewInfoDto build(SyainMainDTO main) {
         return EmployeePreviewInfoDto.builder()
-                .workerId(main.syainId())
-                .workerName(StrUtil.concat(true, main.firstNameKanji(), main.lastNameKanji()))
-                .gender(main.seibetu())
-                .jobCategoryId(main.syokugyoKind())
-                .onBoardDate(main.nyuusyaDate())
-                .offBoardDate(main.taisyaDate())
+                .workerId(main.getSyainId())
+                .workerName(StrUtil.concat(true, main.getFirstNameKanji(), main.getLastNameKanji()))
+                .gender(main.getSeibetu())
+                .jobCategoryId(main.getSyokugyoKind())
+                .onBoardDate(main.getNyuusyaDate())
+                .offBoardDate(main.getTaisyaDate())
                 .build();
 
     }
