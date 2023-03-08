@@ -4,6 +4,8 @@ import com.bright.star.service.dto.TorihikisakiMainDTO;
 import com.bright.star.service.dto.TorihikisakiTantouDTO;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author yanzou
  * @version V1.0.0
@@ -15,10 +17,10 @@ public class ConsumerWithWorkerVO {
 
     private TorihikisakiMainDTO consumer;
 
-    private TorihikisakiTantouDTO consumerTantou;
+    private List<TorihikisakiTantouDTO> consumerTantouList;
 
-    public ConsumerWithWorkerVO(TorihikisakiMainDTO torihikisakiMainDTO, TorihikisakiTantouDTO torihikisakiTantouDTO) {
+    public ConsumerWithWorkerVO(TorihikisakiMainDTO torihikisakiMainDTO, List<TorihikisakiTantouDTO> torihikisakiTantouDTOList) {
         consumer = torihikisakiMainDTO;
-        consumerTantou = torihikisakiTantouDTO;
+        consumerTantouList = torihikisakiTantouDTOList;
     }
 }
