@@ -6,6 +6,8 @@ import com.bright.star.infrastructure.persistence.entity.TorihikisakiTantou;
 import com.bright.star.infrastructure.persistence.dao.TorihikisakiTantouDao;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import java.util.List;
+
 /**
 * <p>
     *  服务类
@@ -16,10 +18,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 @Service
 public class TorihikisakiTantouService extends  ServiceImpl<TorihikisakiTantouDao, TorihikisakiTantou> {
 
-    public TorihikisakiTantou getByTorihikisaki(Integer id) {
+    public List<TorihikisakiTantou> getByTorihikisaki(Integer id) {
         LambdaQueryWrapper<TorihikisakiTantou> condition =
                 new LambdaQueryWrapper<TorihikisakiTantou>().eq(TorihikisakiTantou::getTorihikiId, id);
-         return getOne(condition);
+         return list(condition);
     }
 
 }

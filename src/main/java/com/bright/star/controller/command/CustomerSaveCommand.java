@@ -17,9 +17,9 @@ import java.util.List;
 public record CustomerSaveCommand(
         @NotNull
         @Schema(description = "取引先情報", required = true)
-        TorihikisakiMainDTO torihikisakiMainDTO,
+        TorihikisakiMainDTO consumer,
 
         @Schema(description = "取引先担当者", required = false)
-        List<TorihikisakiTantouDTO> torihikisakiTantouDTO
+        List<TorihikisakiTantouDTO> consumerTantouList
 ) {
 }

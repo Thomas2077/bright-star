@@ -45,8 +45,8 @@ public class CustomerAppService {
 
         return torihikisakiMainList.stream().map(torihikisaki -> {
             TorihikisakiMainDTO torihikisakiMainDTO = BeanUtil.copyProperties(torihikisaki, TorihikisakiMainDTO.class);
-            TorihikisakiTantouDTO torihikisakiTantouDTO = BeanUtil.copyProperties(torihikisakiTantouService.getByTorihikisaki(torihikisaki.getTorihikiId()), TorihikisakiTantouDTO.class);
-            return new ConsumerWithWorkerVO(torihikisakiMainDTO, torihikisakiTantouDTO);
+            List<TorihikisakiTantouDTO> torihikisakiTantouDTOList = BeanUtil.copyToList(torihikisakiTantouService.getByTorihikisaki(torihikisaki.getTorihikiId()), TorihikisakiTantouDTO.class);
+            return new ConsumerWithWorkerVO(torihikisakiMainDTO, torihikisakiTantouDTOList);
         }).collect(Collectors.toList());
     }
 
@@ -58,10 +58,10 @@ public class CustomerAppService {
     @Transactional
     public void saveCustomer(CustomerSaveCommand command) {
 
-        TorihikisakiMain torihikisakiMain = BeanTools.copyProperties(command.torihikisakiMainDTO(), new TorihikisakiMain());
+        TorihikisakiMain torihikisakiMain = BeanTools.copyProperties(command.consumer(), new TorihikisakiMain());
         torihikisakiMainService.save(torihikisakiMain);
 
-        List<TorihikisakiTantou> torihikisakiTantouList = BeanTools.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class);
+        List<TorihikisakiTantou> torihikisakiTantouList = BeanTools.copyToList(command.consumerTantouList(), TorihikisakiTantou.class);
         torihikisakiTantouService.saveBatch(torihikisakiTantouList);
     }
 
