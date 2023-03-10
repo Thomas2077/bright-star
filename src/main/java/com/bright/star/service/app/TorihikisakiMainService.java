@@ -21,10 +21,9 @@ import java.util.List;
 public class TorihikisakiMainService extends  ServiceImpl<TorihikisakiMainDao, TorihikisakiMain> {
 
     public List<TorihikisakiMain> queryByCondition(ConsumerQueryCommand command) {
-        LambdaQueryWrapper<TorihikisakiMain> query = new LambdaQueryWrapper();
-        // TODO change the 取引元名
+        LambdaQueryWrapper<TorihikisakiMain> query = new LambdaQueryWrapper<>();
         query.like(StrUtil.isNotEmpty(command.customerName()), TorihikisakiMain::getTorihikiNameAll, command.customerName());
-        query.eq(TorihikisakiMain::getFax, command.customerAddress());
+        query.eq(StrUtil.isNotEmpty(command.customerAddress()), TorihikisakiMain::getFax, command.customerAddress());
         query.orderBy(true,true, TorihikisakiMain::getTorihikiId);
         return list(query);
     }

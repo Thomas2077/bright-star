@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CustomerAppService {
+public class ConsumerAppService {
 
     private final TorihikisakiMainService torihikisakiMainService;
     private final TorihikisakiTantouService torihikisakiTantouService;
@@ -74,5 +74,10 @@ public class CustomerAppService {
     public void updateCustomer(CustomerUpdateCommand command) {
         torihikisakiMainService.updateById(BeanTools.copyProperties(command.torihikisakiMainDTO(),  new TorihikisakiMain()));
         torihikisakiTantouService.updateBatchById(BeanTools.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class));
+    }
+
+    public List<TorihikisakiTantouDTO> getTantouByConsumerId(Integer id) {
+        List<TorihikisakiTantou> tantouList = torihikisakiTantouService.getByTorihikisaki(id);
+        return BeanTools.copyToList(tantouList, TorihikisakiTantouDTO.class);
     }
 }
