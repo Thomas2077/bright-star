@@ -32,7 +32,7 @@ class UserAccessLog extends Model<UserAccessLog> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "ID", type = IdType.ASSIGN_ID)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
     /**

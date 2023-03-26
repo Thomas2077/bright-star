@@ -4,6 +4,7 @@ import com.bright.star.controller.command.ConsumerQueryCommand;
 import com.bright.star.controller.command.CustomerSaveCommand;
 import com.bright.star.controller.command.CustomerUpdateCommand;
 import com.bright.star.controller.vo.ConsumerWithWorkerVO;
+import com.bright.star.infrastructure.access.AccessLog;
 import com.bright.star.service.ConsumerAppService;
 import com.bright.star.service.dto.TorihikisakiTantouDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,6 +37,7 @@ public class ConsumerController {
      * @return
      */
     @GetMapping
+    @AccessLog
     @Operation(summary = "queryByCondition", description = "取引先を検索する" )
     public ResponseEntity<List<ConsumerWithWorkerVO>> queryByCondition(ConsumerQueryCommand command) {
        return ResponseEntity.ok(customerService.queryByCondition(command));

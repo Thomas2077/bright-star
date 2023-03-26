@@ -1,6 +1,8 @@
 package com.bright.star.controller;
 
 import com.bright.star.controller.command.SettingQueryCommand;
+import com.bright.star.infrastructure.access.AccessLog;
+import com.bright.star.infrastructure.auth.Role;
 import com.bright.star.service.app.TgSettingService;
 import com.bright.star.service.dto.TgSettingDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,8 +33,8 @@ public class SettingController {
 
 
     @GetMapping("")
+    @AccessLog(role = Role.USER, pageId = "12121")
     public ResponseEntity<List<TgSettingDTO>> query(@Valid SettingQueryCommand param){
-
         return ResponseEntity.ok(tgSettingService.listByTypes(param.category1(), param.category2(), param.category3()));
     }
 

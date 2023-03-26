@@ -22,8 +22,8 @@ public class TorihikisakiMainService extends  ServiceImpl<TorihikisakiMainDao, T
 
     public List<TorihikisakiMain> queryByCondition(ConsumerQueryCommand command) {
         LambdaQueryWrapper<TorihikisakiMain> query = new LambdaQueryWrapper<>();
-        query.like(StrUtil.isNotEmpty(command.customerName()), TorihikisakiMain::getTorihikiNameAll, command.customerName());
-        query.eq(StrUtil.isNotEmpty(command.customerAddress()), TorihikisakiMain::getFax, command.customerAddress());
+        query.like(StrUtil.isNotEmpty(command.consumerName()), TorihikisakiMain::getTorihikiNameAll, command.consumerName());
+        query.eq(StrUtil.isNotEmpty(command.consumerAddress()), TorihikisakiMain::getFax, command.consumerAddress());
         query.orderBy(true,true, TorihikisakiMain::getTorihikiId);
         return list(query);
     }
