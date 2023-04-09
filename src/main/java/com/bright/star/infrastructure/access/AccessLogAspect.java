@@ -44,7 +44,6 @@ public class AccessLogAspect {
         userAccessLog.setUserId(1);
         userAccessLog.setGamenId("gamenUd");
         userAccessLog.setStartTime(LocalDateTime.now());
-
         userAccessLogService.save(userAccessLog);
     }
 }
