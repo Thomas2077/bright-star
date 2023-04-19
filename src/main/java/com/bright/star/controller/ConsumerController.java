@@ -65,6 +65,23 @@ public class ConsumerController {
         customerService.updateCustomer(command);
     }
 
+    /**
+     * 取引先情報を削除する
+     * @param customerId
+     * @return
+     */
+    @DeleteMapping
+    @Operation(summary = "deleteCustomer", description = "取引先を削除する" )
+    @AccessLog(testId = "#customerId", pageId = "#customerId")
+    public void deleteCustomer(Integer customerId) {
+        customerService.deleteCustomer(customerId);
+    }
+
+    /**
+     * 取引先担当を検索する
+     * @param id　取引先id
+     * @return
+     */
     @GetMapping("/tantou/{id}")
     @Operation(summary = "queryTantouByConsumerId", description = "担当を検索する")
     public ResponseEntity<List<TorihikisakiTantouDTO>> queryByTantouId(@PathVariable("id") Integer id){

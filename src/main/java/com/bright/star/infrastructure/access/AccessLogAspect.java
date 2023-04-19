@@ -11,6 +11,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Annotation;
@@ -36,9 +39,25 @@ public class AccessLogAspect {
 
     @Before(value = "accessLog()")
     public void doBefore(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
         MethodSignature signature = (MethodSignature)joinPoint.getSignature();
         var method = signature.getMethod();
         AccessLog annotation = method.getAnnotation(AccessLog.class);
+        log.info("annotation.pageId() :{}", annotation.pageId());
+        log.info("annotation.test id() :{}", annotation.testId());
+
+        StandardEvaluationContext context = new StandardEvaluationContext();
+
+        // Map function parameters to their names
+        for (int i = 0; i < signature.getParameterNames().length; i++) {
+            context.setVariable(signature.getParameterNames()[i], args[i]);
+        }
+
+        // Parse and evaluate the SpEL expression
+        ExpressionParser parser = new SpelExpressionParser();
+        String spelExpressionResult = parser.parseExpression(annotation.pageId()).getValue(context, String.class);
+
+        System.out.println("SpEL 表达式结果: " + spelExpressionResult);
 
         UserAccessLog userAccessLog = new UserAccessLog();
         userAccessLog.setUserId(1);

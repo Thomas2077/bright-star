@@ -76,6 +76,10 @@ public class ConsumerAppService {
         torihikisakiTantouService.updateBatchById(BeanTools.copyToList(command.torihikisakiTantouDTO(), TorihikisakiTantou.class));
     }
 
+    public void deleteCustomer(Integer torihikiId){
+        torihikisakiMainService.removeById(torihikiId);
+    }
+
     public List<TorihikisakiTantouDTO> getTantouByConsumerId(Integer id) {
         List<TorihikisakiTantou> tantouList = torihikisakiTantouService.getByTorihikisaki(id);
         return BeanTools.copyToList(tantouList, TorihikisakiTantouDTO.class);
