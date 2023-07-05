@@ -4,12 +4,14 @@ import com.bright.star.controller.command.ConsumerQueryCommand;
 import com.bright.star.controller.command.CustomerSaveCommand;
 import com.bright.star.controller.command.CustomerUpdateCommand;
 import com.bright.star.controller.vo.ConsumerWithWorkerVO;
-import com.bright.star.service.CustomerAppService;
-import com.bright.star.service.dto.TorihikisakiMainDTO;
+import com.bright.star.infrastructure.access.AccessLog;
+import com.bright.star.service.ConsumerAppService;
+import com.bright.star.service.dto.TorihikisakiTantouDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,7 @@ import java.util.List;
 @RequestMapping("/v1/consumer-manage")
 public class ConsumerController {
 
-    public final CustomerAppService customerService;
+    public final ConsumerAppService customerService;
 
     /**
      * 取引先情報を検索する
@@ -35,9 +37,10 @@ public class ConsumerController {
      * @return
      */
     @GetMapping
+    @AccessLog
     @Operation(summary = "queryByCondition", description = "取引先を検索する" )
-    public List<ConsumerWithWorkerVO> queryByCondition(ConsumerQueryCommand command) {
-       return customerService.queryByCondition(command);
+    public ResponseEntity<List<ConsumerWithWorkerVO>> queryByCondition(ConsumerQueryCommand command) {
+       return ResponseEntity.ok(customerService.queryByCondition(command));
     }
 
     /**
@@ -60,5 +63,28 @@ public class ConsumerController {
     @Operation(summary = "updateCustomer", description = "取引先を更新する" )
     public void updateCustomer(@RequestBody CustomerUpdateCommand command) {
         customerService.updateCustomer(command);
+    }
+
+    /**
+     * 取引先情報を削除する
+     * @param customerId
+     * @return
+     */
+    @DeleteMapping
+    @Operation(summary = "deleteCustomer", description = "取引先を削除する" )
+    @AccessLog(testId = "#customerId", pageId = "#customerId")
+    public void deleteCustomer(Integer customerId) {
+        customerService.deleteCustomer(customerId);
+    }
+
+    /**
+     * 取引先担当を検索する
+     * @param id　取引先id
+     * @return
+     */
+    @GetMapping("/tantou/{id}")
+    @Operation(summary = "queryTantouByConsumerId", description = "担当を検索する")
+    public ResponseEntity<List<TorihikisakiTantouDTO>> queryByTantouId(@PathVariable("id") Integer id){
+        return ResponseEntity.ok(customerService.getTantouByConsumerId(id));
     }
 }

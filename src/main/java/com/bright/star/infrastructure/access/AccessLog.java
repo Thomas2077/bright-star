@@ -17,5 +17,7 @@ public @interface AccessLog {
 
     String pageId() default "";
 
+    String testId() default "";
+
     Role role() default Role.USER;
 }

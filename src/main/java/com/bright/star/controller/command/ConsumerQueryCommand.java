@@ -12,10 +12,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public record ConsumerQueryCommand(
 
         @Schema(description = "取引先名", example = "consumerName")
-        String customerName,
+        String consumerName,
 
         @Schema(description = "取引元名", example = "consumerAddress")
-        String customerAddress
+        String consumerAddress
 
 ) {
 }
