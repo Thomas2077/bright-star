@@ -13,8 +13,7 @@ on:
 
 jobs:
   build:
-    branches:
-      - 'dev'
+   
 
     runs-on: ubuntu-latest
     permissions:
