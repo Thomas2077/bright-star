@@ -33,4 +33,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
 
     - name: Build with Gradle
-      run: gradle build
+      uses: gradle/gradle-build-action@v2
+      with:
+        args: check
